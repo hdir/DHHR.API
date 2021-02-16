@@ -10,7 +10,7 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 - [API definisjon](#api-definisjon)
 - [API metoder](#api-metoder)
 - [API returobjekter](#api-returobjekter)
-- [Miljøer](#miljoer)
+- [Miljøer](#miljøer)
 - [Postman eksempler](#postman-eksempler)
 - [Kodeeksempler](#kodeeksempler)
 - [Referanser](#referanser)
