@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Generated on 2021-09-02  13:36:10 at NPR -->
+<!-- Avdeling helseregistres meldinger -->
+<!-- Modul ipl  -->
+<!-- Skjema for Kravspesifikasjon - IPLOS i KPR  -->
+<!-- XML-Schema level supported is specified by W3C -->
+<!-- http://www.w3.org/2001/XMLSchema -->
+<schema 
+       xmlns="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema.xsd" 
+    xmlns:kith="http://www.kith.no/xmlstds" 
+    xmlns:nprx="http://www.npr.no/xmlstds/56_0_0" 
+    xmlns:npr = "http://www.npr.no/xmlstds/56_0_0_ipl"
+    targetNamespace = "http://www.npr.no/xmlstds/56_0_0_ipl"
+    version = "56.0.0.27"
+    elementFormDefault = "qualified"
+    attributeFormDefault="unqualified">
+   <import namespace="http://www.npr.no/xmlstds/56_0_0" schemaLocation="NPR.xsd"/>
+
+
+
+<!-- LEVEL 1 -->
+
+<!-- Class: Melding -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Melding' --> 
+<simpleType name="meldingstype">
+   <restriction base="string"/>  <!-- Kodeverk: 7371 Meldingstype -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Melding' --> 
+<annotation>
+   <appinfo>
+      <class name="Melding"/> 
+      <attribute name="meldingstype"/> 
+      <codingScheme name="Meldingstype"/> 
+      <codingScheme OID="7371"/> 
+      <simpleT name="meldingstype"/> 
+         <code value="E" text="Endringsmelding" comment=""/>
+         <code value="B" text="Satsvis melding" comment=""/>
+         <code value="K" text="Melding for kontinuerlige oppdateringer" comment=""/>
+   </appinfo>
+</annotation>
+
+
+<!-- LEVEL 2 -->
+
+<!-- Class: Notifikasjon -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Notifikasjon' --> 
+<simpleType name="status_notifikasjon">
+   <restriction base="string"/>  <!-- Kodeverk: 7316 Status notifikasjon -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Notifikasjon' --> 
+<annotation>
+   <appinfo>
+      <class name="Notifikasjon"/> 
+      <attribute name="statusNotifikasjon"/> 
+      <codingScheme name="Status notifikasjon"/> 
+      <codingScheme OID="7316"/> 
+      <simpleT name="status_notifikasjon"/> 
+         <code value="N" text="Original" comment="Ny hendelse"/>
+         <code value="M" text="Erstatt" comment="Korrigering av original hendelse med ny informasjon som erstatter tilvarende original informasjon"/>
+         <code value="T" text="Suppler" comment="Korrigering av original hendelse med tilleggsinformasjon"/>
+         <code value="C" text="Annuler" comment="Annulering av original hendelse"/>
+   </appinfo>
+</annotation>
+
+<!-- Class: Kontaktperson -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Kontaktperson' --> 
+<simpleType name="kontaktperson_type">
+   <restriction base="string"/>  <!-- Kodeverk: 8471 Kontaktperson type -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Kontaktperson' --> 
+<annotation>
+   <appinfo>
+      <class name="Kontaktperson"/> 
+      <attribute name="typeKontaktperson"/> 
+      <codingScheme name="Kontaktperson type"/> 
+      <codingScheme OID="8471"/> 
+      <simpleT name="kontaktperson_type"/> 
+         <code value="1" text="Teknisk produksjon" comment=""/>
+         <code value="2" text="Somatisk spesialisthelsetjeneste" comment=""/>
+         <code value="3" text="Psykisk helsevern voksne" comment=""/>
+         <code value="4" text="Barne og ungdomspsykiatri" comment=""/>
+         <code value="5" text="Tverrfaglig spesialisert rusbehandling" comment=""/>
+         <code value="6" text="Personskadestatistikk" comment=""/>
+         <code value="7" text="Ventelistestatistikk" comment=""/>
+         <code value="8" text="Ident-meldingen" comment=""/>
+         <code value="9" text="RESH" comment=""/>
+         <code value="10" text="Radiologi" comment="Unntatt stråleterapi"/>
+         <code value="11" text="Stråleterapi" comment=""/>
+         <code value="12" text="Pakkeforløp kreft" comment=""/>
+         <code value="13" text="Vedtak etter psykisk helsevernloven" comment=""/>
+         <code value="14" text="Organisasjonsoppsett i EPJ" comment=""/>
+         <code value="15" text="EPJ-leverandør, meldingsvalidering" comment=""/>
+         <code value="16" text="IPLOS kontaktperson" comment=""/>
+         <code value="17" text="IPLOS innsendingsansvarlig" comment=""/>
+         <code value="18" text="Helsestasjons- og skolehelsetjeneste" comment=""/>
+         <code value="19" text="Kostnad per pasient (KPP)" comment=""/>
+   </appinfo>
+</annotation>
+
+<!-- Class: Kommunale helse- og omsorgstjenester -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+<!-- LEVEL 3 -->
+
+<!-- Class: Tjeneste Start -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Tjeneste Start' --> 
+<simpleType name="iPLOS_tjenestetype">
+   <restriction base="string"/>  <!-- Kodeverk: 9151 IPLOS tjenestetype -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Tjeneste Start' --> 
+<annotation>
+   <appinfo>
+      <class name="Tjeneste Start"/> 
+      <attribute name="tjenesteType"/> 
+      <codingScheme name="IPLOS tjenestetype"/> 
+      <codingScheme OID="9151"/> 
+      <simpleT name="iPLOS_tjenestetype"/> 
+         <code value="1" text="Praktisk bistand - daglige gjøremål" comment=""/>
+         <code value="2" text="Praktisk bistand - opplæring - daglige gjøremål" comment=""/>
+         <code value="3" text="Praktisk bistand - brukerstyrt - personlig assistanse" comment=""/>
+         <code value="4" text="Dagaktivitetstilbud" comment=""/>
+         <code value="5" text="Matombringing" comment=""/>
+         <code value="15" text="Helsetjenester i hjemmet" comment=""/>
+         <code value="7" text="Avlastning utenfor institusjon" comment=""/>
+         <code value="9" text="Støttekontakt" comment=""/>
+         <code value="11" text="Omsorgsstønad" comment=""/>
+         <code value="29" text="Bolig som kommunen disponerer for helse- og omsorgsformål" comment=""/>
+         <code value="18" text="Tidsbegrenset opphold - utredning/behandling" comment=""/>
+         <code value="19" text="Tidsbegrenset opphold - habilitering/rehabilitering" comment=""/>
+         <code value="20" text="Tidsbegrenset opphold - annet" comment=""/>
+         <code value="8" text="Avlastning i institusjon" comment=""/>
+         <code value="17" text="Dagopphold i institusjon" comment=""/>
+         <code value="22" text="Nattopphold i institusjon" comment=""/>
+         <code value="21" text="Langtidsopphold i institusjon" comment=""/>
+         <code value="25" text="Kommunal øyeblikkelig hjelp - døgnopphold" comment=""/>
+   </appinfo>
+</annotation>
+
+<!-- Class: Tjenesteutfører endret -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Tjenesteutfører endret' --> 
+<!-- simpleType for  iPLOS_tjenestetype written before    -->
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Tjenesteutfører endret' --> 
+<!-- Appinfo for  IPLOS tjenestetype written before    -->
+
+<!-- Class: Tjeneste Slutt -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Tjeneste Slutt' --> 
+<!-- simpleType for  iPLOS_tjenestetype written before    -->
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Tjeneste Slutt' --> 
+<!-- Appinfo for  IPLOS tjenestetype written before    -->
+
+
+<!-- LEVEL 4 -->
+
+<!-- Class: Bruker/pasient -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Bruker/pasient' --> 
+<simpleType name="kjonn">
+   <restriction base="string"/>  <!-- Kodeverk: 3101 Kjønn -->
+
+</simpleType>
+<simpleType name="type_personidentifikasjon">
+   <restriction base="string"/>  <!-- Kodeverk: 9032 Type personidentifikasjon -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Bruker/pasient' --> 
+<annotation>
+   <appinfo>
+      <class name="Bruker/pasient"/> 
+      <attribute name="kjonn"/> 
+      <codingScheme name="Kjønn"/> 
+      <codingScheme OID="3101"/> 
+      <simpleT name="kjonn"/> 
+         <code value="0" text="Ikke kjent" comment=""/>
+         <code value="1" text="Mann" comment=""/>
+         <code value="2" text="Kvinne" comment=""/>
+         <code value="9" text="Ikke spesifisert" comment=""/>
+   </appinfo>
+</annotation>
+<annotation>
+   <appinfo>
+      <class name="Bruker/pasient"/> 
+      <attribute name="typeID"/> 
+      <codingScheme name="Type personidentifikasjon"/> 
+      <codingScheme OID="9032"/> 
+      <simpleT name="type_personidentifikasjon"/> 
+         <code value="1" text="Norsk fødselsnummer" comment=""/>
+         <code value="2" text="D-nummer" comment="Personer i kontakt med norske myndigheter uten norsk fødselsnummer"/>
+         <code value="3" text="H-nummer" comment="Nødnummer"/>
+         <code value="4" text="Passnummer" comment=""/>
+         <code value="5" text="Svensk personnummer" comment=""/>
+         <code value="6" text="Dansk personnummer" comment=""/>
+         <code value="7" text="Sosial security number" comment=""/>
+         <code value="8" text="Forsikringspolise nummer" comment=""/>
+         <code value="9" text="Annet" comment=""/>
+         <code value="10" text="DUF-nummer" comment="Database for utlendingsforvaltningen"/>
+         <code value="12" text="Felles hjelpenummer (FH-nummer)" comment=""/>
+   </appinfo>
+</annotation>
+   <!-- dataType 'Kodet' -->
+   <simpleType name='Kodet' >
+      <restriction base= 'string'> 
+      </restriction> 
+   </simpleType>
+</schema>

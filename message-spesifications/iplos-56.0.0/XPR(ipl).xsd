@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Generated on 2021-09-02  13:36:10 at NPR -->
+<!-- Avdeling helseregistres meldinger -->
+<!-- Modul ipl  -->
+<!-- Skjema for Kravspesifikasjon - IPLOS i KPR  -->
+<!-- XML-Schema level supported is specified by W3C -->
+<!-- http://www.w3.org/2001/XMLSchema -->
+<schema 
+       xmlns="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema.xsd" 
+    xmlns:kith="http://www.kith.no/xmlstds" 
+    xmlns:nprx="http://www.npr.no/xmlstds/56_0_0" 
+    xmlns:npr = "http://www.npr.no/xmlstds/56_0_0_ipl"
+    targetNamespace = "http://www.npr.no/xmlstds/56_0_0_ipl"
+    version = "56.0.0.27"
+    elementFormDefault = "qualified"
+    attributeFormDefault="unqualified">
+   <import namespace="http://www.npr.no/xmlstds/56_0_0" schemaLocation="NPR.xsd"/>
+
+<include schemaLocation="XPR(ipl)_CodingSchemes.xsd"/>
+
+
+<!-- LEVEL 1 -->
+
+<!-- Class: Melding -->
+<element name = "Melding">
+   <annotation>
+       <documentation>
+         Opplysninger som leverandører av helsetjenester i kommuner, helsevirksomheter eller helsepersonell etter bestemmelser i lov eller i medhold av lov i gitte situasjoner er pliktig til å rapportere.
+      </documentation>
+   </annotation>
+   <complexType >
+      <sequence>
+         <element ref = "npr:Notifikasjon" minOccurs = "0" maxOccurs = "unbounded" />
+         <element ref = "npr:Kontaktperson" minOccurs = "1" maxOccurs = "unbounded" />
+         <element ref = "npr:Kommune" minOccurs = "1" maxOccurs = "unbounded" />
+      </sequence>
+      <attribute name = "versjon" type = "string"  use = "required" fixed = "56.0.0" />
+      <attribute name = "meldingstype" type = "npr:meldingstype"  use = "required"  fixed = "K"/>
+      <attribute name = "fraDatoPeriode" type = "date"  use = "prohibited" />
+      <attribute name = "uttakDato" type = "date"  use = "prohibited" />
+      <attribute name = "leverandor" type = "string"  use = "required" />
+      <attribute name = "navnEPJ" type = "string"  use = "required" />
+      <attribute name = "versjonEPJ" type = "string"  use = "required" />
+      <attribute name = "versjonUt" type = "string"  use = "required" />
+      <attribute name = "lopenr" type = "integer"  use = "prohibited" />
+      <attribute name = "tilDatoPeriode" type = "date"  use = "prohibited" />
+      <attribute name = "lokalident" type = "string"  use = "optional" />
+   </complexType>
+      <unique name= "NotifikasjonP_ID">
+         <selector xpath = "npr:Notifikasjon"/>
+         <field xpath = "@notifikasjonGUID"/>
+      </unique>
+      <unique name= "KommuneP_ID">
+         <selector xpath = "npr:Kommune"/>
+         <field xpath = "@kommuneNr"/>
+      </unique>
+</element>
+
+
+<!-- LEVEL 2 -->
+
+<!-- Class: Notifikasjon -->
+<element name = "Notifikasjon">
+   <complexType >
+      <sequence>
+         <element ref = "npr:TjenesteStart" minOccurs = "0" maxOccurs = "1" />
+         <element ref = "npr:TjenesteutforerEndret" minOccurs = "0" maxOccurs = "1" />
+         <element ref = "npr:TjenesteSlutt" minOccurs = "0" maxOccurs = "1" />
+      </sequence>
+      <attribute name = "statusNotifikasjon" type = "npr:status_notifikasjon"  use = "required" />
+      <attribute name = "notifikasjonTid" type = "dateTime"  use = "required" />
+      <attribute name = "notifikasjonGUID" type = "nprx:guid"  use = "required" />
+      <attribute name = "notifikasjonForrigeGUID" type = "nprx:guid"  use = "required" />
+      <attribute name = "notifikasjonLopeNr" type = "string"  use = "required" />
+      <attribute name = "notifikasjonRef" type = "nprx:guid"  use = "optional" />
+   </complexType>
+      <unique name= "TjenesteStartP_ID">
+         <selector xpath = "npr:TjenesteStart"/>
+         <field xpath = "@hendelseGUID"/>
+      </unique>
+      <unique name= "TjenesteSluttP_ID">
+         <selector xpath = "npr:TjenesteSlutt"/>
+         <field xpath = "@hendelseGUID"/>
+      </unique>
+      <unique name= "TjenesteutforerEndretP_ID">
+         <selector xpath = "npr:TjenesteutforerEndret"/>
+         <field xpath = "@hendelseGUID"/>
+      </unique>
+</element>
+
+<!-- Class: Kontaktperson -->
+<element name = "Kontaktperson">
+   <annotation>
+       <documentation>
+         Kontaktpersoner for dialog mellom kommune/helseinstitusjon og Helsedirektoratet.  NB: Det kan registreres flere kontaktpersoner per Type kontaktperson.
+      </documentation>
+   </annotation>
+   <complexType >
+      <attribute name = "kontPerson" type = "string"  use = "required" />
+      <attribute name = "meldTelefon" type = "string"  use = "optional" />
+      <attribute name = "meldEpost1" type = "string"  use = "required" />
+      <attribute name = "meldEpost2" type = "string"  use = "optional" />
+      <attribute name = "typeKontaktperson" type = "npr:kontaktperson_type"  use = "required" />
+   </complexType>
+</element>
+
+<!-- Class: Kommunale helse- og omsorgstjenester -->
+<element name = "Kommune">
+   <annotation>
+       <documentation>
+         Helse- og omsorgstjenester definert i helse- og omsorgstjenesteloven § 3-2 første ledd nr. 4, nr. 5 og nr. 6 og § 3-6 og § 3-8. Se også kodeverket for tjenestetyper.
+      </documentation>
+   </annotation>
+   <complexType >
+      <attribute name = "kommuneNr" type = "string"  use = "required" />
+      <attribute name = "kommuneOrgNr" type = "string"  use = "prohibited" />
+   </complexType>
+</element>
+
+
+<!-- LEVEL 3 -->
+
+<!-- Class: Tjeneste Start -->
+<element name = "TjenesteStart">
+   <annotation>
+       <documentation>
+         Oppstart av tjeneste
+      </documentation>
+   </annotation>
+   <complexType >
+      <sequence>
+         <element ref = "npr:Bruker" maxOccurs = "1"  />
+      </sequence>
+      <attribute name = "tjenesteType" type = "npr:iPLOS_tjenestetype"  use = "required" />
+      <attribute name = "hendelseRegistrertTidspunkt" type = "dateTime"  use = "required" />
+      <attribute name = "tjenesteOrgNrUtovende" type = "string"  use = "optional" />
+      <attribute name = "hendelseDato" type = "date"  use = "required" />
+      <attribute name = "tjenesteID" type = "string"  use = "required" />
+      <attribute name = "hendelseGUID" type = "nprx:guid"  use = "required" />
+   </complexType>
+</element>
+
+<!-- Class: Tjenesteutfører endret -->
+<element name = "TjenesteutforerEndret">
+   <annotation>
+       <documentation>
+         Tjenesteutfører for en tjeneste er endret
+      </documentation>
+   </annotation>
+   <complexType >
+      <sequence>
+         <element ref = "npr:Bruker" maxOccurs = "1"  />
+      </sequence>
+      <attribute name = "tjenesteType" type = "npr:iPLOS_tjenestetype"  use = "required" />
+      <attribute name = "hendelseRegistrertTidspunkt" type = "dateTime"  use = "required" />
+      <attribute name = "tjenesteOrgNrUtovende" type = "string"  use = "optional" />
+      <attribute name = "hendelseDato" type = "date"  use = "required" />
+      <attribute name = "tjenesteID" type = "string"  use = "required" />
+      <attribute name = "hendelseGUID" type = "nprx:guid"  use = "required" />
+   </complexType>
+</element>
+
+<!-- Class: Tjeneste Slutt -->
+<element name = "TjenesteSlutt">
+   <annotation>
+       <documentation>
+         Avslutning av tjeneste
+      </documentation>
+   </annotation>
+   <complexType >
+      <sequence>
+         <element ref = "npr:Bruker" maxOccurs = "1"  />
+      </sequence>
+      <attribute name = "hendelseGUID" type = "nprx:guid"  use = "required" />
+      <attribute name = "tjenesteType" type = "npr:iPLOS_tjenestetype"  use = "required" />
+      <attribute name = "tjenesteOrgNrUtovende" type = "string"  use = "optional" />
+      <attribute name = "hendelseRegistrertTidspunkt" type = "dateTime"  use = "required" />
+      <attribute name = "hendelseDato" type = "date"  use = "required" />
+      <attribute name = "tjenesteID" type = "string"  use = "required" />
+   </complexType>
+</element>
+
+
+<!-- LEVEL 4 -->
+
+<!-- Class: Bruker/pasient -->
+<element name = "Bruker">
+   <annotation>
+       <documentation>
+         En person som søker om, eller mottar kommunale helse- og omsorgstjenester.
+      </documentation>
+   </annotation>
+   <complexType >
+      <attribute name = "pasientGUID" type = "nprx:guid"  use = "optional" />
+      <attribute name = "brukerNr" type = "string"  use = "required" />
+      <attribute name = "kjonn" type = "npr:kjonn"  use = "prohibited" />
+      <attribute name = "fodselsar" type = "integer"  use = "prohibited" />
+      <attribute name = "kommuneBydel" type = "nprx:bydelNr"  use = "optional" />
+      <attribute name = "fid" type = "string"  use = "optional" />
+      <attribute name = "komNrHjem" type = "nprx:kommNr"  use = "prohibited" />
+      <attribute name = "typeID" type = "npr:type_personidentifikasjon"  use = "optional" />
+   </complexType>
+</element>
+</schema>

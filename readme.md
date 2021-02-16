@@ -1,6 +1,5 @@
-# DHHR.API Dokumentasjon
+# DHHR API Dokumentasjon
 Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere meldinger. Eksempelkode i C# vil også være mulig å laste ned på et senere tidspunkt.
-
 
 
 ## Innhold
@@ -10,11 +9,9 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 - [Overordnet flyt](#overordnet-flyt)
 - [API definisjon](#api-definisjon)
 - [API metoder](#api-metoder)
-- API metoder
-- API returobjekter
-- Postman eksempler
-- Kodeeksempler
-
+- [API returobjekter](#api-returobjekter)
+- [Postman eksempler](#postman-eksempler)
+- [Kodeeksempler](#kodeeksempler)
 
 
 ## Om tjenesten
@@ -40,21 +37,80 @@ Overordnet beskrives for hvordan en skal avlevere meldinger via API grensesnitt.
 5.	Alle status-varianter vil også ha en data-struktur i body.
 
 ## API definisjon
+Header-meldingen definerer avsender, mottaker, meldingstype, meldingsversjon og meldingsid. I selve payload så ligger meldingen kryptert og signert ved CMS/PKCS#7.
 
-TODO: Definere meldingsformatet
 
-TODO: 1 - definere messagecontainer + messageheaders
+### Header-melding
 
-TODO: 2 - definere specne på ulike meldinger
 
-TODO: 3 - IPLOS / HST 2021
+	{   
+		"messageHeader": {
+			"fromHerId": 123, // fra-HerId - long  
+			"toHerId": 1234, // til-HerId - long
+			"messageType": "IPLOS", // meldingstype - string
+			"messageVersion": "65.0.0", // meldingsversjon - string
+			"messageId": "91b970e-ae6c-4316-99d2-1f034dd5c74f" // meldingsid - guid
+		},
+		"payload": "bnRSZXNwb25zZT48cmVzcG9uc2V" // byte-array
+	}
+
+
+
+### IPLOS melding
+
+Dataformat for IPLOS melding
+
+
+	Meldingstype: IPLOS
+	Meldingsversjon: 56.0.0
+
+![Systemskisse](/docs/images/kpr-iplos-56-0-0.png)
+
+Swagger-fil kan lastes ned herfra:
+
+[https://app-kneikapi-test-001.azurewebsites.net/swagger/index.html](https://app-kneikapi-test-001.azurewebsites.net/swagger/index.html)
+
+
+
+### HST melding
+Kommer så snart denne er tilgjenglig
+
+
 
 
 ## API metoder
 
-TODO: Definere API metoder
+Avlevering av meldinger gjøres med HTTP POST kall mot følgende endepunkt:
 
-TODO: Definere kryptering/signering
+    /message/process
+
+![Process message](/docs/images/process-message.png)
+
+
+
+### Kryptering/signering
+
+Innholdet i payload skal krypteres/signeres med CMS/PKCS#7.
+
+For avsender (EPJ) av meldinger så vil dette bety følgende:
+
+- En må hente mottakers krypteringssertifikat fra Adresseregisteret (public-del).
+- Avsenders (EPJ) signeringssertifikat må være installert på enhet (privat-del.
+- Signeringssertifikatet må være registrert i Adresseregisteret på avsenders HerId.
+- Payload krypteres med krypteringssertifikatet og signeres med signeringssertifikatet.
+
+
+
+Referanser:
+
+- [https://tools.ietf.org/html/rfc5652](https://tools.ietf.org/html/rfc5652 "Cryptographic Message Syntax (CMS)")
+- [https://en.wikipedia.org/wiki/Cryptographic_Message_Syntax](https://en.wikipedia.org/wiki/Cryptographic_Message_Syntax "Cryptographic Message Syntax")
+- [SignedCms - Microsoft .NET](https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.pkcs.signedcms.-ctor?view=dotnet-plat-ext-5.0#System_Security_Cryptography_Pkcs_SignedCms__ctor "SignedCms - Microsoft .NET")
+- [PKCS#7 Java](http://www.docjar.com/docs/api/sun/security/pkcs/PKCS7.html "PKCS#7 Java")
+
+Se også eksempelkode for implementasjon.
+
+
 
 ## API returobjekter
 
