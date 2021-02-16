@@ -10,9 +10,10 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 - [API definisjon](#api-definisjon)
 - [API metoder](#api-metoder)
 - [API returobjekter](#api-returobjekter)
+- [Miljøer](#miljoer)
 - [Postman eksempler](#postman-eksempler)
 - [Kodeeksempler](#kodeeksempler)
-
+- [Referanser](#referanser)
 
 ## Om tjenesten
 HTTP-basert API for avlevering av meldinger. I første faste for IPLOS og HST hendelser.
@@ -114,9 +115,56 @@ Se også eksempelkode for implementasjon.
 
 ## API returobjekter
 
-TODO: Definere hva vi returnere på de ulike statusene
+Følgende datamodeller returneres på de ulike HTTP statuskodene:
 
 
+
+### HTTP 200 OK
+
+	{   
+		"messageId": "57211091-50cd-4ad7-993d-83fe2ff5dd3f", // Meldingsid på avlevert melding
+		"refId": "7fdd8edd-1946-4266-bed8-9edc02f94eb3" // Referanseid for avlevering
+	}
+
+
+
+### HTTP 400
+
+	{   
+		"validationCode": 1234, // Valideringsfeil
+		"validationMessage": "Feil signeringssertifikat", // Valideringsfeil
+		"refId": "7fdd8edd-1946-4266-bed8-9edc02f94eb3" // Referanseid for avlevering
+	}
+
+
+### HTTP 500
+	{   
+		"errorCode": 1002, // Feilkode
+		"errorMessage": "Teknisk feil på løsning. Prøv igjen senere.", // Feilmelding
+		"refId": "7fdd8edd-1946-4266-bed8-9edc02f94eb3" // Referanseid for avlevering
+	}
+
+
+## Miljøer
+Ulike miljøer og variabler pr miljø.
+
+
+### API avlevering
+
+- Test/Dev: xx.prod.xx.no
+- QA: xx.prod.xx.no
+- Prod: xx.prod.xx.no
+
+### Adresseregisteret
+
+- Test/Dev: xx.prod.xx.no
+- QA: xx.prod.xx.no
+- Prod: xx.prod.xx.no
+
+### HerId
+- Test/Dev: 1234
+- QA: 1234
+- Prod: 1234
 
 ## Postman eksempler
 
@@ -126,3 +174,14 @@ TODO: Eksempler og screenshots fra postman hvor modeller etc er utfylt?
 ## Kodeeksempler
 
 TODO: Kodeeksmpler i C# som gjør alt ink kryptering/signering.
+
+
+
+
+## Referanser
+
+
+- [Registrering av IPLOS-data i kommunen](https://www.helsedirektoratet.no/veiledere/registrering-av-iplos-data-i-kommunen)
+- [Rapportere data til KPR](https://www.helsedirektoratet.no/tema/statistikk-registre-og-rapporter/helsedata-og-helseregistre/kommunalt-pasient-og-brukerregister-kpr/rapportere-data-til-kpr)
+- [Registrere omsorgsdata (IPLOS)](https://www.helsedirektoratet.no/tema/statistikk-registre-og-rapporter/helsedata-og-helseregistre/kommunalt-pasient-og-brukerregister-kpr/registrere-omsorgsdata)
+
