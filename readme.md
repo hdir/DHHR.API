@@ -5,13 +5,14 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 
 ## Innhold
 
-- [Om tjenesten](https://github.com/hdir/DHHR.API#om-tjenesten)
-- [Systemskisse](https://github.com/hdir/DHHR.API#systemskisse)
-- [Overordnet flyt](https://github.com/hdir/DHHR.API#overordnet-flyt)
-- [API definisjon](https://github.com/hdir/DHHR.API#api-definisjon)
-- [API metoder](https://github.com/hdir/DHHR.API#api-metoder)
+- [Om tjenesten](#om-tjenesten)
+- [Systemskisse](#systemskisse)
+- [Overordnet flyt](#overordnet-flyt)
+- [API definisjon](#api-definisjon)
+- [API metoder](#api-metoder)
 - API metoder
 - API returobjekter
+- Postman eksempler
 - Kodeeksempler
 
 
@@ -22,7 +23,7 @@ HTTP-basert API for avlevering av meldinger. I første faste for IPLOS og HST he
 
 ## Systemskisse
 
-![Systemskisse](https://github.com/hdir/Dhhr.Api/blob/master/docs/images/konsept-skisse.png)
+![Systemskisse](/docs/images/konsept-skisse.png)
 
 ## Overordnet flyt
 
@@ -41,10 +42,31 @@ Overordnet beskrives for hvordan en skal avlevere meldinger via API grensesnitt.
 ## API definisjon
 
 TODO: Definere meldingsformatet
-TODO: 
+
+TODO: 1 - definere messagecontainer + messageheaders
+
+TODO: 2 - definere specne på ulike meldinger
+
+TODO: 3 - IPLOS / HST 2021
 
 
 ## API metoder
 
 TODO: Definere API metoder
+
 TODO: Definere kryptering/signering
+
+## API returobjekter
+
+TODO: Definere hva vi returnere på de ulike statusene
+
+
+
+## Postman eksempler
+
+TODO: Eksempler og screenshots fra postman hvor modeller etc er utfylt?
+
+
+## Kodeeksempler
+
+TODO: Kodeeksmpler i C# som gjør alt ink kryptering/signering.
