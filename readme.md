@@ -5,10 +5,11 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 
 ## Innhold
 
-- Om tjenesten
-- Systemskisse
-- Overordnet flyt
-- API definisjon
+- [Om tjenesten](https://github.com/hdir/DHHR.API#om-tjenesten)
+- [Systemskisse](https://github.com/hdir/DHHR.API#systemskisse)
+- [Overordnet flyt](https://github.com/hdir/DHHR.API#overordnet-flyt)
+- [API definisjon](https://github.com/hdir/DHHR.API#api-definisjon)
+- [API metoder](https://github.com/hdir/DHHR.API#api-metoder)
 - API metoder
 - API returobjekter
 - Kodeeksempler
@@ -16,7 +17,7 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 
 
 ## Om tjenesten
-TODO
+HTTP-basert API for avlevering av meldinger. I første faste for IPLOS og HST hendelser.
 
 
 ## Systemskisse
@@ -36,3 +37,14 @@ Overordnet beskrives for hvordan en skal avlevere meldinger via API grensesnitt.
 	2. HTTP 400 - Bad Request (Ugyldig meldingsformat)
 	3. HTTP 500 - Server Error (Annen teknisk feil)
 5.	Alle status-varianter vil også ha en data-struktur i body.
+
+## API definisjon
+
+TODO: Definere meldingsformatet
+TODO: 
+
+
+## API metoder
+
+TODO: Definere API metoder
+TODO: Definere kryptering/signering
