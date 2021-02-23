@@ -5,7 +5,7 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 ## Innhold
 
 - [Om tjenesten](#om-tjenesten)
-- [Systemskisse](#systemskisse)
+- [Skisser/arkitektur](#systemskisse)
 - [Overordnet flyt](#overordnet-flyt)
 - [API definisjon](#api-definisjon)
 - [API metoder](#api-metoder)
@@ -19,9 +19,27 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 HTTP-basert API for avlevering av meldinger. I første faste for IPLOS og HST hendelser.
 
 
-## Systemskisse
+## Skisser/arkitektur
 
+
+### Systemskisse
 ![Systemskisse](/docs/images/konsept-skisse.png)
+
+### Bruk av API (utvikling, qa & test)
+![Systemskisse](/docs/images/flyt03.png)
+
+
+
+### Bruk av API (prod)
+![Systemskisse](/docs/images/flyt01.png)
+
+
+### Felleskomponenter (alle miljøer)
+![Systemskisse](/docs/images/flyt02.png)
+
+
+
+
 
 ## Overordnet flyt
 
