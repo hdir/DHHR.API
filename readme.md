@@ -11,8 +11,6 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 - [API metoder](#api-metoder)
 - [API returobjekter](#api-returobjekter)
 - [Miljøer](#miljøer)
-- [Postman eksempler](#postman-eksempler)
-- [Kodeeksempler](#kodeeksempler)
 - [Referanser](#referanser)
 
 ## Om tjenesten
@@ -87,7 +85,7 @@ Dataformat for IPLOS melding
 
 Swagger-fil kan lastes ned herfra:
 
-[https://app-kneikapi-test-001.azurewebsites.net/swagger/index.html](https://app-kneikapi-test-001.azurewebsites.net/swagger/index.html)
+[https://app-messagein-dev.azurewebsites.net/swagger/index.html](https://app-messagein-dev.azurewebsites.net/swagger/index.html)
 
 
 
@@ -169,30 +167,20 @@ Ulike miljøer og variabler pr miljø.
 
 ### API avlevering
 
-- Test/Dev: xx.prod.xx.no
-- QA: xx.prod.xx.no
-- Prod: xx.prod.xx.no
+- Test/Dev: https://app-messagein-dev.azurewebsites.net/api
+- QA: n/a
+- Prod: n/a
 
 ### Adresseregisteret
 
-- Test/Dev: xx.prod.xx.no
-- QA: xx.prod.xx.no
-- Prod: xx.prod.xx.no
+- Test/Dev: register-web.test.nhn.no
+- QA: register.nhn.no
+- Prod: register.nhn.no
 
 ### HerId
-- Test/Dev: 1234
-- QA: 1234
-- Prod: 1234
-
-## Postman eksempler
-
-TODO: Eksempler og screenshots fra postman hvor modeller etc er utfylt?
-
-
-## Kodeeksempler
-
-TODO: Kodeeksmpler i C# som gjør alt ink kryptering/signering.
-
+- Test/Dev: 8139520
+- QA: n/a
+- Prod: n/a
 
 
 
