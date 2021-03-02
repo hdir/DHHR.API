@@ -100,7 +100,7 @@ Kommer så snart denne er tilgjenglig
 
 API tjenesten benytter HelseID for tilgangssikring (machine to machine). Dette realiseres ved hjelp av OAuth 2.0. Alle forespørsler til API-et blir dermed kontrollert mot HelseID.
 
-EPJ må integrere sin tjeneste med HelseID for å få utstedt token med riktig claims. Utstedet tokene (JWT) må deretter benyttes i alle forespørsler til API-et.
+EPJ må integrere sin tjeneste med HelseID for å få utstedt token med riktig claims. Utstedt token (JWT) må deretter benyttes i alle forespørsler til API-et.
 
 
 
@@ -108,6 +108,8 @@ Les mer om HelseID og teknisk dokumentasjon her:
 
 [https://www.nhn.no/helseid/](https://www.nhn.no/helseid/)
 
+
+![auth](/docs/images/auth.png)
 
 
 ## API metoder
