@@ -8,6 +8,7 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 - [Skisser/arkitektur](#systemskisse)
 - [Overordnet flyt](#overordnet-flyt)
 - [API definisjon](#api-definisjon)
+- [Autentisering](#autentisering)
 - [API metoder](#api-metoder)
 - [API returobjekter](#api-returobjekter)
 - [Miljøer](#miljøer)
@@ -46,12 +47,13 @@ Overordnet beskrives for hvordan en skal avlevere meldinger via API grensesnitt.
 1. EPJ genererer og formaterer riktig JSON objekt som skal sendes til API’et.
 2. JSON objektet krypteres og signeres (CMS/PKCS #7)
 (Mottakers sertifikat for kryptering og avsenders sertifikat for signering – må stemme overens med oppføringer i Adresseregisteret)
-3. EPJ avleverer JSON objektet til angitt endepunkt for API’et.
-4. API vil returnere følgende statuser:
+3. EJP gjør nødvending autentisering med HelseID.
+4. EPJ avleverer JSON objektet til angitt endepunkt for API’et.
+5. API vil returnere følgende statuser:
 	1. HTTP 200 – Ok (Meldingen er mottatt)
 	2. HTTP 400 - Bad Request (Ugyldig meldingsformat)
 	3. HTTP 500 - Server Error (Annen teknisk feil)
-5.	Alle status-varianter vil også ha en data-struktur i body.
+6.	Alle status-varianter vil også ha en data-struktur i body.
 
 ## API definisjon
 Header-meldingen definerer avsender, mottaker, meldingstype, meldingsversjon og meldingsid. I selve payload så ligger meldingen kryptert og signert ved CMS/PKCS#7.
@@ -92,6 +94,19 @@ Swagger-fil kan lastes ned herfra:
 ### HST melding
 Kommer så snart denne er tilgjenglig
 
+
+
+## Autentisering
+
+API tjenesten benytter HelseID for tilgangssikring (machine to machine). Dette realiseres ved hjelp av OAuth 2.0. Alle forespørsler til API-et blir dermed kontrollert mot HelseID.
+
+EPJ må integrere sin tjeneste med HelseID for å få utstedt token med riktig claims. Utstedet tokene (JWT) må deretter benyttes i alle forespørsler til API-et.
+
+
+
+Les mer om HelseID og teknisk dokumentasjon her:
+
+[https://www.nhn.no/helseid/](https://www.nhn.no/helseid/)
 
 
 
