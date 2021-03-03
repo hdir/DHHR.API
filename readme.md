@@ -83,12 +83,15 @@ Dataformat for IPLOS melding
 	Meldingstype: IPLOS
 	Meldingsversjon: 56.0.0
 
-![Systemskisse](/docs/images/kpr-iplos-56-0-0.png)
 
 Swagger-fil kan lastes ned herfra:
 
 [https://app-messagein-dev.azurewebsites.net/swagger/index.html](https://app-messagein-dev.azurewebsites.net/swagger/index.html)
 
+
+XSD for IPLOS kan lastes ner herfra:
+
+[message-spesifications/iplos-56.0.0/XPR(ipl).xsd](message-spesifications/iplos-56.0.0/XPR(ipl).xsd)
 
 
 ### HST melding
