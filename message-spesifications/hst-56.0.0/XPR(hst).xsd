@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Generated on 2021-09-03  12:17:26 at NPR -->
+<!-- Avdeling helseregistres meldinger -->
+<!-- Modul hst  -->
+<!-- Skjema for Innrapportering av data fra helsestasjon og skolehelsetjeneste  -->
+<!-- XML-Schema level supported is specified by W3C -->
+<!-- http://www.w3.org/2001/XMLSchema -->
+<schema 
+       xmlns="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema.xsd" 
+    xmlns:kith="http://www.kith.no/xmlstds" 
+    xmlns:nprx="http://www.npr.no/xmlstds/56_0_0" 
+    xmlns:npr = "http://www.npr.no/xmlstds/56_0_0_hst"
+    targetNamespace = "http://www.npr.no/xmlstds/56_0_0_hst"
+    version = "56.0.0.27"
+    elementFormDefault = "qualified"
+    attributeFormDefault="unqualified">
+   <import namespace="http://www.npr.no/xmlstds/56_0_0" schemaLocation="NPR.xsd"/>
+
+<include schemaLocation="XPR(hst)_CodingSchemes.xsd"/>
+
+
+<!-- LEVEL 1 -->
+
+<!-- Class: Melding -->
+<element name = "Melding">
+   <annotation>
+       <documentation>
+         Opplysninger som leverandører av helsetjenester i kommuner, helsevirksomheter eller helsepersonell etter bestemmelser i lov eller i medhold av lov i gitte situasjoner er pliktig til å rapportere.
+      </documentation>
+   </annotation>
+   <complexType >
+      <sequence>
+         <element ref = "npr:Notifikasjon" minOccurs = "0" maxOccurs = "unbounded" />
+         <element ref = "npr:Kontaktperson" minOccurs = "1" maxOccurs = "unbounded" />
+         <element ref = "npr:Kommune" minOccurs = "1" maxOccurs = "unbounded" />
+      </sequence>
+      <attribute name = "versjon" type = "string"  use = "required" fixed = "56.0.0" />
+      <attribute name = "meldingstype" type = "npr:meldingstype"  use = "required" />
+      <attribute name = "fraDatoPeriode" type = "date"  use = "required" />
+      <attribute name = "uttakDato" type = "date"  use = "required" />
+      <attribute name = "leverandor" type = "string"  use = "required" />
+      <attribute name = "navnEPJ" type = "string"  use = "required" />
+      <attribute name = "versjonEPJ" type = "string"  use = "required" />
+      <attribute name = "versjonUt" type = "string"  use = "required" />
+      <attribute name = "lopenr" type = "integer"  use = "required" />
+      <attribute name = "tilDatoPeriode" type = "date"  use = "required" />
+      <attribute name = "lokalident" type = "string"  use = "optional" />
+   </complexType>
+      <unique name= "NotifikasjonP_ID">
+         <selector xpath = "npr:Notifikasjon"/>
+         <field xpath = "@notifikasjonGUID"/>
+      </unique>
+      <unique name= "KommuneP_ID">
+         <selector xpath = "npr:Kommune"/>
+         <field xpath = "@kommuneNr"/>
+      </unique>
+</element>
+
+
+<!-- LEVEL 2 -->
+
+<!-- Class: Notifikasjon -->
+<element name = "Notifikasjon">
+   <complexType >
+      <sequence>
+         <element ref = "npr:Konsultasjon" minOccurs = "0" maxOccurs = "unbounded" />
+      </sequence>
+      <attribute name = "statusNotifikasjon" type = "npr:status_notifikasjon"  use = "required" />
+      <attribute name = "notifikasjonTid" type = "dateTime"  use = "required" />
+      <attribute name = "notifikasjonGUID" type = "nprx:guid"  use = "required" />
+      <attribute name = "notifikasjonForrigeGUID" type = "nprx:guid"  use = "required" />
+      <attribute name = "notifikasjonLopeNr" type = "string"  use = "required" />
+      <attribute name = "notifikasjonRef" type = "nprx:guid"  use = "optional" />
+   </complexType>
+      <unique name= "KonsultasjonP_ID">
+         <selector xpath = "npr:Konsultasjon"/>
+         <field xpath = "@konsultasjonID"/>
+      </unique>
+</element>
+
+<!-- Class: Kontaktperson -->
+<element name = "Kontaktperson">
+   <annotation>
+       <documentation>
+         Kontaktpersoner for dialog mellom kommune/helseinstitusjon og Helsedirektoratet.  NB: Det kan registreres flere kontaktpersoner per Type kontaktperson.
+      </documentation>
+   </annotation>
+   <complexType >
+      <attribute name = "kontPerson" type = "string"  use = "required" />
+      <attribute name = "meldTelefon" type = "string"  use = "optional" />
+      <attribute name = "meldEpost1" type = "string"  use = "required" />
+      <attribute name = "meldEpost2" type = "string"  use = "optional" />
+      <attribute name = "typeKontaktperson" type = "npr:kontaktperson_type"  use = "required" />
+   </complexType>
+</element>
+
+<!-- Class: Kommunale helse- og omsorgstjenester -->
+<element name = "Kommune">
+   <annotation>
+       <documentation>
+         Helse- og omsorgstjenester definert i helse- og omsorgstjenesteloven § 3-2 første ledd nr. 4, nr. 5 og nr. 6 og § 3-6 og § 3-8. Se også kodeverket for tjenestetyper.
+      </documentation>
+   </annotation>
+   <complexType >
+      <sequence>
+         <element ref = "npr:Enhet" minOccurs = "0" maxOccurs = "unbounded" />
+      </sequence>
+      <attribute name = "kommuneNr" type = "string"  use = "required" />
+      <attribute name = "kommuneOrgNr" type = "string"  use = "optional" />
+   </complexType>
+      <unique name= "EnhetP_ID">
+         <selector xpath = "npr:Enhet"/>
+         <field xpath = "@enhetID"/>
+      </unique>
+      <keyref name = "RefEnhet_IDREF0" refer = "npr:EnhetP_ID">
+         <selector xpath = "npr:Melding/npr:Notifikasjon/npr:Konsultasjon/npr:RefEnhet"/>
+         <field xpath = "@enhetID"/>
+      </keyref>
+</element>
+
+
+<!-- LEVEL 3 -->
+
+<!-- Class: Konsultasjon -->
+<element name = "Konsultasjon">
+   <annotation>
+       <documentation>
+         En konsultasjon/kontakt i helsestasjon eller i skolehelsetjeneste
+      </documentation>
+   </annotation>
+   <complexType >
+      <sequence>
+         <element ref = "npr:Barn_ungdom" maxOccurs = "1"  />
+         <element ref = "npr:Deltaker" minOccurs = "0" maxOccurs = "unbounded" />
+         <element ref = "npr:Helseperson" minOccurs = "0" maxOccurs = "unbounded" />
+         <element ref = "npr:Maling" minOccurs = "0" maxOccurs = "unbounded" />
+         <element ref = "npr:RefEnhet" minOccurs = "0" maxOccurs = "unbounded" />
+      </sequence>
+      <attribute name = "episodeGUID" type = "nprx:guid"  use = "optional" />
+      <attribute name = "konsultasjonID" type = "string"  use = "required" />
+      <attribute name = "datoTidStart" type = "dateTime"  use = "required" />
+      <attribute name = "formKonsultasjon" type = "npr:konsultasjonsformer_for_helsestasjons__og_skolehelsetjenesten"  use = "required" />
+      <attribute name = "anbefaltTypeKonsultasjon" type = "npr:alderstrinn"  use = "required" />
+      <attribute name = "konsultasjonRegistrertTidspunkt" type = "dateTime"  use = "required" />
+      <attribute name = "amming" type = "npr:status_amming_mor"  use = "required" />
+   </complexType>
+      <unique name= "Barn_ungdomP_ID">
+         <selector xpath = "npr:Barn_ungdom"/>
+         <field xpath = "@barn_ungdomNr"/>
+      </unique>
+</element>
+
+<!-- Class: Enhet -->
+<element name = "Enhet">
+   <annotation>
+       <documentation>
+         Organisatorisk enhet ved en helseinstitusjon eller et selvstendig foretak (eks avtalespesialist) uten organisatoriske inndelinger, eller organisatorisk enhet innenfor kommunale helse- og omsorgstjenester.
+      </documentation>
+   </annotation>
+   <complexType >
+      <attribute name = "enhetID" type = "string"  use = "required" />
+      <attribute name = "orgNr" type = "string"  use = "optional" />
+      <attribute name = "nace" type = "string"  use = "prohibited" />
+      <attribute name = "sektor" type = "npr:funksjonskontoplan"  use = "prohibited" />
+      <attribute name = "offAvdKode" type = "string"  use = "prohibited" />
+      <attribute name = "reshID" type = "string"  use = "optional" />
+      <attribute name = "isfRefusjon" type = "npr:ja_nei"  use = "prohibited" />
+      <attribute name = "enhetLokal" type = "string"  use = "optional" />
+      <attribute name = "enhetNavn" type = "string"  use = "optional" />
+   </complexType>
+</element>
+
+
+<!-- LEVEL 4 -->
+
+<!-- Class: Barn/ungdom -->
+<element name = "Barn_ungdom">
+   <annotation>
+       <documentation>
+         Barn eller ungdom som mottar helsehjelp ved helsestasjon eller skolehelsetjenesten.
+      </documentation>
+   </annotation>
+   <complexType >
+      <attribute name = "pasientGUID" type = "nprx:guid"  use = "required" />
+      <attribute name = "barn_ungdomNr" type = "string"  use = "required" />
+      <attribute name = "kjonn" type = "npr:kjonn"  use = "required" />
+      <attribute name = "fodselsar" type = "integer"  use = "required" />
+      <attribute name = "fid" type = "string"  use = "required" />
+      <attribute name = "typeID" type = "npr:type_personidentifikasjon"  use = "required" />
+   </complexType>
+</element>
+
+<!-- Class: Deltaker -->
+<element name = "Deltaker">
+   <annotation>
+       <documentation>
+         Dokumenterer om det er andre deltakere. Brukes også for å rapportere ledsagere.  Hvis pasienten er et barn vil omsorgspersoner ofte delta.   Hvis pasienten er en godt voksen person vil kanskje barn delta. 
+      </documentation>
+   </annotation>
+   <complexType >
+      <attribute name = "deltakerType" type = "npr:deltaker_type"  use = "required" />
+   </complexType>
+</element>
+
+<!-- Class: Helseperson -->
+<element name = "Helseperson">
+   <annotation>
+       <documentation>
+         Angir hvilke typer helsepersonell som deltar i direkte pasientkontakt, og ved indirekte pasientkontakt som samarbeidspartnere i utredning og planlegging av behandling av en pasient.
+      </documentation>
+   </annotation>
+   <complexType >
+      <attribute name = "polUtforende" type = "npr:utforende_helsepersonell"  use = "required" />
+      <attribute name = "spesialist" type = "npr:ja_nei_ukjent"  use = "optional" />
+      <attribute name = "rolle" type = "npr:rolle"  use = "optional" />
+      <attribute name = "helsepersonHPR" type = "string"  use = "optional" />
+   </complexType>
+</element>
+
+<!-- Class: Måling -->
+<element name = "Maling">
+   <annotation>
+       <documentation>
+         En generell klassen for å kunne rapportere en måling av noe. Denne klassen skal benyttes i ulike kliniske sammenhenger og vil derfor kunne inneholde bruk av ulike kodeverk for å beskrive hva som måles. 
+      </documentation>
+   </annotation>
+   <complexType >
+      <sequence>
+         <element ref = "npr:Maleresultat" minOccurs = "0" maxOccurs = "unbounded" />
+      </sequence>
+      <attribute name = "typeMaling" type = "string"  use = "required" />
+      <attribute name = "malingKodeverk" type = "string"  use = "optional" />
+      <attribute name = "malingDatoTid" type = "dateTime"  use = "required" />
+      <attribute name = "typeMalingKodet" type = "npr:type_maling"  use = "optional" />
+   </complexType>
+      <unique name= "MaleresultatP_ID">
+         <selector xpath = "npr:Maleresultat"/>
+         <field xpath = "@maleresultatNr"/>
+      </unique>
+</element>
+
+<!-- Class: Referanse til enhet -->
+<element name = "RefEnhet">
+   <annotation>
+       <documentation>
+         Inneholder alle referanser av forskjellige typer til klassen Enhet. Type referanse er bestemt av kode i kodeverk.  Obligatoriske referanser i NPR-melding fra Episode og Henvisning er av typene  1 Behandlingsted  7 Avdeling  2 Fagenhet  Det kan godt være at ulike referanser refererer til samme Enhet.
+      </documentation>
+   </annotation>
+   <complexType >
+      <attribute name = "enhetID" type = "string"  use = "required" />
+      <attribute name = "typeEnhet" type = "npr:type_enhet"  use = "required" />
+   </complexType>
+</element>
+
+
+<!-- LEVEL 5 -->
+
+<!-- Class: Måleresultat -->
+<element name = "Maleresultat">
+   <annotation>
+       <documentation>
+         Resultatet av målinger som er av spesielle typer nevnt i klassen måling.
+      </documentation>
+   </annotation>
+   <complexType >
+      <attribute name = "maleresultatNr" type = "nonNegativeInteger"  use = "required" />
+      <attribute name = "verdi" type = "string"  use = "required" />
+      <attribute name = "enhet" type = "string"  use = "optional" />
+   </complexType>
+</element>
+</schema>

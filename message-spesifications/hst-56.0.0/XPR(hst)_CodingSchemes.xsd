@@ -1,0 +1,579 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Generated on 2021-09-03  12:17:26 at NPR -->
+<!-- Avdeling helseregistres meldinger -->
+<!-- Modul hst  -->
+<!-- Skjema for Innrapportering av data fra helsestasjon og skolehelsetjeneste  -->
+<!-- XML-Schema level supported is specified by W3C -->
+<!-- http://www.w3.org/2001/XMLSchema -->
+<schema 
+       xmlns="http://www.w3.org/2001/XMLSchema"
+       xmlns:xsd="http://www.w3.org/2001/XMLSchema.xsd" 
+    xmlns:kith="http://www.kith.no/xmlstds" 
+    xmlns:nprx="http://www.npr.no/xmlstds/56_0_0" 
+    xmlns:npr = "http://www.npr.no/xmlstds/56_0_0_hst"
+    targetNamespace = "http://www.npr.no/xmlstds/56_0_0_hst"
+    version = "56.0.0.27"
+    elementFormDefault = "qualified"
+    attributeFormDefault="unqualified">
+   <import namespace="http://www.npr.no/xmlstds/56_0_0" schemaLocation="NPR.xsd"/>
+
+
+
+<!-- LEVEL 1 -->
+
+<!-- Class: Melding -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Melding' --> 
+<simpleType name="meldingstype">
+   <restriction base="string"/>  <!-- Kodeverk: 7371 Meldingstype -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Melding' --> 
+<annotation>
+   <appinfo>
+      <class name="Melding"/> 
+      <attribute name="meldingstype"/> 
+      <codingScheme name="Meldingstype"/> 
+      <codingScheme OID="7371"/> 
+      <simpleT name="meldingstype"/> 
+         <code value="E" text="Endringsmelding" comment=""/>
+         <code value="B" text="Satsvis melding" comment=""/>
+         <code value="K" text="Melding for kontinuerlige oppdateringer" comment=""/>
+   </appinfo>
+</annotation>
+
+
+<!-- LEVEL 2 -->
+
+<!-- Class: Notifikasjon -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Notifikasjon' --> 
+<simpleType name="status_notifikasjon">
+   <restriction base="string"/>  <!-- Kodeverk: 7316 Status notifikasjon -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Notifikasjon' --> 
+<annotation>
+   <appinfo>
+      <class name="Notifikasjon"/> 
+      <attribute name="statusNotifikasjon"/> 
+      <codingScheme name="Status notifikasjon"/> 
+      <codingScheme OID="7316"/> 
+      <simpleT name="status_notifikasjon"/> 
+         <code value="N" text="Original" comment="Ny hendelse"/>
+         <code value="M" text="Erstatt" comment="Korrigering av original hendelse med ny informasjon som erstatter tilvarende original informasjon"/>
+         <code value="T" text="Suppler" comment="Korrigering av original hendelse med tilleggsinformasjon"/>
+         <code value="C" text="Annuler" comment="Annulering av original hendelse"/>
+   </appinfo>
+</annotation>
+
+<!-- Class: Kontaktperson -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Kontaktperson' --> 
+<simpleType name="kontaktperson_type">
+   <restriction base="string"/>  <!-- Kodeverk: 8471 Kontaktperson type -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Kontaktperson' --> 
+<annotation>
+   <appinfo>
+      <class name="Kontaktperson"/> 
+      <attribute name="typeKontaktperson"/> 
+      <codingScheme name="Kontaktperson type"/> 
+      <codingScheme OID="8471"/> 
+      <simpleT name="kontaktperson_type"/> 
+         <code value="1" text="Teknisk produksjon" comment=""/>
+         <code value="2" text="Somatisk spesialisthelsetjeneste" comment=""/>
+         <code value="3" text="Psykisk helsevern voksne" comment=""/>
+         <code value="4" text="Barne og ungdomspsykiatri" comment=""/>
+         <code value="5" text="Tverrfaglig spesialisert rusbehandling" comment=""/>
+         <code value="6" text="Personskadestatistikk" comment=""/>
+         <code value="7" text="Ventelistestatistikk" comment=""/>
+         <code value="8" text="Ident-meldingen" comment=""/>
+         <code value="9" text="RESH" comment=""/>
+         <code value="10" text="Radiologi" comment="Unntatt stråleterapi"/>
+         <code value="11" text="Stråleterapi" comment=""/>
+         <code value="12" text="Pakkeforløp kreft" comment=""/>
+         <code value="13" text="Vedtak etter psykisk helsevernloven" comment=""/>
+         <code value="14" text="Organisasjonsoppsett i EPJ" comment=""/>
+         <code value="15" text="EPJ-leverandør, meldingsvalidering" comment=""/>
+         <code value="16" text="IPLOS kontaktperson" comment=""/>
+         <code value="17" text="IPLOS innsendingsansvarlig" comment=""/>
+         <code value="18" text="Helsestasjons- og skolehelsetjeneste" comment=""/>
+         <code value="19" text="Kostnad per pasient (KPP)" comment=""/>
+   </appinfo>
+</annotation>
+
+<!-- Class: Kommunale helse- og omsorgstjenester -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+<!-- LEVEL 3 -->
+
+<!-- Class: Konsultasjon -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Konsultasjon' --> 
+<simpleType name="konsultasjonsformer_for_helsestasjons__og_skolehelsetjenesten">
+   <restriction base="string"/>  <!-- Kodeverk: 9506 Konsultasjonsformer for helsestasjons- og skolehelsetjenesten -->
+
+</simpleType>
+<simpleType name="status_amming_mor">
+   <restriction base="string"/>  <!-- Kodeverk: 8524 Status amming mor -->
+
+</simpleType>
+<simpleType name="alderstrinn">
+   <restriction base="string"/>  <!-- Kodeverk: 9505 Alderstrinn -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Konsultasjon' --> 
+<annotation>
+   <appinfo>
+      <class name="Konsultasjon"/> 
+      <attribute name="formKonsultasjon"/> 
+      <codingScheme name="Konsultasjonsformer for helsestasjons- og skolehelsetjenesten"/> 
+      <codingScheme OID="9506"/> 
+      <simpleT name="konsultasjonsformer_for_helsestasjons__og_skolehelsetjenesten"/> 
+         <code value="H" text="Hjemmebesøk" comment=""/>
+         <code value="G" text="Gruppekonsultasjon" comment=""/>
+         <code value="I" text="Individuell konsultasjon" comment=""/>
+   </appinfo>
+</annotation>
+<annotation>
+   <appinfo>
+      <class name="Konsultasjon"/> 
+      <attribute name="amming"/> 
+      <codingScheme name="Status amming mor"/> 
+      <codingScheme OID="8524"/> 
+      <simpleT name="status_amming_mor"/> 
+         <code value="1" text="Fullamming" comment=""/>
+         <code value="2" text="Delvis amming" comment=""/>
+         <code value="3" text="Ammer ikke" comment=""/>
+   </appinfo>
+</annotation>
+<annotation>
+   <appinfo>
+      <class name="Konsultasjon"/> 
+      <attribute name="anbefaltTypeKonsultasjon"/> 
+      <codingScheme name="Alderstrinn"/> 
+      <codingScheme OID="9505"/> 
+      <simpleT name="alderstrinn"/> 
+         <code value="3D" text="Hjemmebesøk av jordmor" comment="Innen tre døgn etter hjemkomst"/>
+         <code value="10D" text="Hjemmebesøk av helsesykepleier" comment="Innen syv-ti døgn etter hjemkomst"/>
+         <code value="4U" text="4 uker" comment=""/>
+         <code value="6U" text="6 uker" comment="Med lege og helsesykepleier"/>
+         <code value="3M" text="3 måneder" comment=""/>
+         <code value="4M" text="4 måneder" comment=""/>
+         <code value="5M" text="5 måneder" comment=""/>
+         <code value="6M" text="6 måneder" comment="Med lege og helsesykepleier"/>
+         <code value="8M" text="8 måneder" comment=""/>
+         <code value="10M" text="10 måneder" comment=""/>
+         <code value="12M" text="12 måneder" comment=""/>
+         <code value="15M" text="15 måneder" comment=""/>
+         <code value="18M" text="17-18 måneder" comment=""/>
+         <code value="2A" text="2 år" comment="Med lege og helsesykepleier"/>
+         <code value="4A" text="4 år" comment=""/>
+         <code value="6A" text="6 år, første trinn" comment="Skolestartundersøkelse"/>
+         <code value="7A" text="7 år, andre trinn" comment=""/>
+         <code value="8A" text="8 år, tredje trinn" comment=""/>
+         <code value="9A" text="9 år, fjerde trinn" comment=""/>
+         <code value="10A" text="10 år, femte trinn" comment=""/>
+         <code value="11A" text="11 år, sjette trinn" comment=""/>
+         <code value="12A" text="12 år, sjuende trinn" comment=""/>
+         <code value="13A" text="13 år, åttende trinn" comment=""/>
+         <code value="14A" text="14 år, niende trinn" comment=""/>
+         <code value="15A" text="15 år, tiende trinn" comment=""/>
+         <code value="16A" text="16 år" comment=""/>
+         <code value="17A" text="17 år" comment=""/>
+         <code value="18A" text="18 år" comment=""/>
+         <code value="E" text="Ekstra konsultasjon" comment="Brukes for konsultasjoner utenfor de ordinære"/>
+   </appinfo>
+</annotation>
+
+<!-- Class: Enhet -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Enhet' --> 
+<simpleType name="ja_nei">
+   <restriction base="string"/>  <!-- Kodeverk: 1101 Ja, nei -->
+
+</simpleType>
+<simpleType name="funksjonskontoplan">
+   <restriction base="string"/>  <!-- Kodeverk: 8492 Funksjonskontoplan -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Enhet' --> 
+<annotation>
+   <appinfo>
+      <class name="Enhet"/> 
+      <attribute name="isfRefusjon"/> 
+      <codingScheme name="Ja, nei"/> 
+      <codingScheme OID="1101"/> 
+      <simpleT name="ja_nei"/> 
+         <code value="1" text="Ja" comment=""/>
+         <code value="2" text="Nei" comment=""/>
+   </appinfo>
+</annotation>
+<annotation>
+   <appinfo>
+      <class name="Enhet"/> 
+      <attribute name="sektor"/> 
+      <codingScheme name="Funksjonskontoplan"/> 
+      <codingScheme OID="8492"/> 
+      <simpleT name="funksjonskontoplan"/> 
+         <code value="400" text="Administrasjon" comment=""/>
+         <code value="460" text="Personalboliger, barnehager og finans- og årsresultat" comment=""/>
+         <code value="600" text="Ambulanse" comment=""/>
+         <code value="606" text="Pasienttransport" comment=""/>
+         <code value="620" text="Somatiske tjenester" comment=""/>
+         <code value="630" text="Somatisk habilitering og rehabilitering" comment=""/>
+         <code value="636" text="Radiologiske tjenester" comment=""/>
+         <code value="637" text="Laboratorietjenester" comment=""/>
+         <code value="641" text="Psykisk helsevern for voksne; sykehus" comment=""/>
+         <code value="642" text="Psykisk helsevern for voksne; Distriktspsykiatriske sentra og annen behandling" comment=""/>
+         <code value="651" text="Psykisk helsevern for barn og unge" comment=""/>
+         <code value="681" text="Tverrfaglig spesialisert behandling av rusmiddelmisbrukere" comment=""/>
+   </appinfo>
+</annotation>
+
+
+<!-- LEVEL 4 -->
+
+<!-- Class: Barn/ungdom -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Barn/ungdom' --> 
+<simpleType name="type_personidentifikasjon">
+   <restriction base="string"/>  <!-- Kodeverk: 9032 Type personidentifikasjon -->
+
+</simpleType>
+<simpleType name="kjonn">
+   <restriction base="string"/>  <!-- Kodeverk: 3101 Kjønn -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Barn/ungdom' --> 
+<annotation>
+   <appinfo>
+      <class name="Barn/ungdom"/> 
+      <attribute name="typeID"/> 
+      <codingScheme name="Type personidentifikasjon"/> 
+      <codingScheme OID="9032"/> 
+      <simpleT name="type_personidentifikasjon"/> 
+         <code value="1" text="Norsk fødselsnummer" comment=""/>
+         <code value="2" text="D-nummer" comment="Personer i kontakt med norske myndigheter uten norsk fødselsnummer"/>
+         <code value="3" text="H-nummer" comment="Nødnummer"/>
+         <code value="4" text="Passnummer" comment=""/>
+         <code value="5" text="Svensk personnummer" comment=""/>
+         <code value="6" text="Dansk personnummer" comment=""/>
+         <code value="7" text="Sosial security number" comment=""/>
+         <code value="8" text="Forsikringspolise nummer" comment=""/>
+         <code value="9" text="Annet" comment=""/>
+         <code value="10" text="DUF-nummer" comment="Database for utlendingsforvaltningen"/>
+         <code value="12" text="Felles hjelpenummer (FH-nummer)" comment=""/>
+   </appinfo>
+</annotation>
+<annotation>
+   <appinfo>
+      <class name="Barn/ungdom"/> 
+      <attribute name="kjonn"/> 
+      <codingScheme name="Kjønn"/> 
+      <codingScheme OID="3101"/> 
+      <simpleT name="kjonn"/> 
+         <code value="0" text="Ikke kjent" comment=""/>
+         <code value="1" text="Mann" comment=""/>
+         <code value="2" text="Kvinne" comment=""/>
+         <code value="9" text="Ikke spesifisert" comment=""/>
+   </appinfo>
+</annotation>
+
+<!-- Class: Deltaker -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Deltaker' --> 
+<simpleType name="deltaker_type">
+   <restriction base="string"/>  <!-- Kodeverk: 8425 Deltaker type -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Deltaker' --> 
+<annotation>
+   <appinfo>
+      <class name="Deltaker"/> 
+      <attribute name="deltakerType"/> 
+      <codingScheme name="Deltaker type"/> 
+      <codingScheme OID="8425"/> 
+      <simpleT name="deltaker_type"/> 
+         <code value="1" text="Ektefelle eller samboer" comment=""/>
+         <code value="2" text="Foreldre/foresatte" comment=""/>
+         <code value="3" text="Andre slektninger som søster, bror og barn av pasient" comment=""/>
+         <code value="9" text="Andre pårørende" comment=""/>
+   </appinfo>
+</annotation>
+
+<!-- Class: Helseperson -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Helseperson' --> 
+<simpleType name="utforende_helsepersonell">
+   <restriction base="string"/>  <!-- Kodeverk: 8401 Utførende helsepersonell -->
+
+</simpleType>
+<simpleType name="ja_nei_ukjent">
+   <restriction base="string"/>  <!-- Kodeverk: 1103 Ja, nei, ukjent -->
+
+</simpleType>
+<simpleType name="rolle">
+   <restriction base="string"/>  <!-- Kodeverk: 8456 Rolle -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Helseperson' --> 
+<annotation>
+   <appinfo>
+      <class name="Helseperson"/> 
+      <attribute name="polUtforende"/> 
+      <codingScheme name="Utførende helsepersonell"/> 
+      <codingScheme OID="8401"/> 
+      <simpleT name="utforende_helsepersonell"/> 
+         <code value="1" text="Lege" comment=""/>
+         <code value="2" text="Sykepleier" comment=""/>
+         <code value="3" text="Pedagog" comment=""/>
+         <code value="4" text="Psykolog" comment=""/>
+         <code value="5" text="Sosionom" comment=""/>
+         <code value="6" text="Barnevernpedagog" comment=""/>
+         <code value="7" text="Vernepleier" comment=""/>
+         <code value="8" text="Jordmor" comment=""/>
+         <code value="11" text="Audiograf" comment=""/>
+         <code value="12" text="Bioingeniør" comment=""/>
+         <code value="13" text="Ergoterapeut" comment=""/>
+         <code value="14" text="Fysioterapeut" comment=""/>
+         <code value="15" text="Klinisk ernæringsfysiolog" comment=""/>
+         <code value="16" text="Radiograf" comment=""/>
+         <code value="17" text="Tannlege" comment=""/>
+         <code value="18" text="Ortoptist" comment="Fra 2017"/>
+         <code value="19" text="Ortopediingeniør" comment="Fra 2017"/>
+         <code value="20" text="Farmasøyt" comment="Fra 2017"/>
+         <code value="21" text="Fotterapeut" comment="Fra 2017"/>
+         <code value="22" text="Genetiker" comment="Helseperson som har konsultasjon med pasient ifm genetisk kartlegging og veiledning (genetisk veileder). Fra 2018."/>
+         <code value="23" text="Logoped" comment="Fra 2018"/>
+         <code value="24" text="Perfusjonist" comment="Fra 2018"/>
+         <code value="25" text="Optiker" comment="Fra 2018"/>
+         <code value="26" text="Audiofysiker" comment="Fra 2019"/>
+         <code value="27" text="Kiropraktor" comment=""/>
+         <code value="28" text="Helsesykepleier" comment="Helseperson som arbeider for helsestasjons- og skolehelsetjenesten. Tidligere kalt helsesøster."/>
+         <code value="29" text="Stråleterapeut" comment="Fra 2020"/>
+         <code value="30" text="Tannpleier" comment="Fra 2020"/>
+         <code value="9" text="Annet helsepersonell" comment=""/>
+   </appinfo>
+</annotation>
+<annotation>
+   <appinfo>
+      <class name="Helseperson"/> 
+      <attribute name="spesialist"/> 
+      <codingScheme name="Ja, nei, ukjent"/> 
+      <codingScheme OID="1103"/> 
+      <simpleT name="ja_nei_ukjent"/> 
+         <code value="1" text="Ja" comment=""/>
+         <code value="2" text="Nei" comment=""/>
+         <code value="9" text="Ukjent" comment=""/>
+   </appinfo>
+</annotation>
+<annotation>
+   <appinfo>
+      <class name="Helseperson"/> 
+      <attribute name="rolle"/> 
+      <codingScheme name="Rolle"/> 
+      <codingScheme OID="8456"/> 
+      <simpleT name="rolle"/> 
+         <code value="1" text="Ansvarlig" comment=""/>
+         <code value="2" text="Ko-terapeut" comment=""/>
+   </appinfo>
+</annotation>
+
+<!-- Class: Måling -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Måling' --> 
+<simpleType name="type_maling">
+   <restriction base="string"/>  <!-- Kodeverk: 9178 Type måling -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Måling' --> 
+<annotation>
+   <appinfo>
+      <class name="Måling"/> 
+      <attribute name="typeMalingKodet"/> 
+      <codingScheme name="Type måling"/> 
+      <codingScheme OID="9178"/> 
+      <simpleT name="type_maling"/> 
+         <code value="CGAS" text="Children's Global Assessment Scale" comment="Generelt funksjonsnivå for barn og unge"/>
+         <code value="HoNOS1" text="Overaktiv, aggressiv, forstyrrende eller agitert atferd" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOS2" text="Selvskade som ikke skyldes uhell" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOS3" text="Problemdrikking eller bruk av rusmiddel" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOS4" text="Kognitive problemer" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOS5" text="Problemer med fysisk sykdom eller funksjonshemming" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOS6" text="Problemer forbundet med hallusinasjoner og vrangforestillinger" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOS7" text="Problem med senket stemningsleie" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOS8A" text="Fobi" comment="Health of the Nation Outcome Scales. Det skal skåres på kun en av HoNOS 8A – HoNOS 8J. Det mest alvorlige kliniske problemet skal skåres."/>
+         <code value="HoNOS8B" text="Angst" comment="Health of the Nation Outcome Scales. Det skal skåres på kun en av HoNOS 8A – HoNOS 8J. Det mest alvorlige kliniske problemet skal skåres."/>
+         <code value="HoNOS8C" text="Tvangslidelse" comment="Health of the Nation Outcome Scales. Det skal skåres på kun en av HoNOS 8A – HoNOS 8J. Det mest alvorlige kliniske problemet skal skåres.Det skal skåres på kun en av HoNOS 8A – HoNOS 8J. Det mest alvorlige kliniske problemet skal skåres."/>
+         <code value="HoNOS8D" text="Mentalt stress/spenninger" comment="Health of the Nation Outcome Scales. Det skal skåres på kun en av HoNOS 8A – HoNOS 8J. Det mest alvorlige kliniske problemet skal skåres."/>
+         <code value="HoNOS8E" text="Dissosiativ" comment="Health of the Nation Outcome Scales, skal angis på en skala fra 0 til 4. Det skal skåres på kun en av HoNOS 8A – HoNOS 8J. Det mest alvorlige kliniske problemet skal skåres."/>
+         <code value="HoNOS8F" text="Somatoform" comment="Health of the Nation Outcome Scales. Det skal skåres på kun en av HoNOS 8A – HoNOS 8J. Det mest alvorlige kliniske problemet skal skåres."/>
+         <code value="HoNOS8G" text="Spiseproblemer" comment="Health of the Nation Outcome Scales. Det skal skåres på kun en av HoNOS 8A – HoNOS 8J. Det mest alvorlige kliniske problemet skal skåres."/>
+         <code value="HoNOS8H" text="Søvnvansker" comment="Health of the Nation Outcome Scales. Det skal skåres på kun en av HoNOS 8A – HoNOS 8J. Det mest alvorlige kliniske problemet skal skåres."/>
+         <code value="HoNOS8I" text="Seksuelt problem" comment="Health of the Nation Outcome Scales. Det skal skåres på kun en av HoNOS 8A – HoNOS 8J. Det mest alvorlige kliniske problemet skal skåres."/>
+         <code value="HoNOS8J" text="Annet problem, spesifiser med typeMaling" comment="Health of the Nation Outcome Scales. Det skal skåres på kun en av HoNOS 8A – HoNOS 8J. Det mest alvorlige kliniske problemet skal skåres."/>
+         <code value="HoNOS9" text="Problemer med forhold til andre" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOS10" text="Problemer med dagliglivets aktiviteter" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOS11" text="Problemer med boligforhold" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOS12" text="Problemer med yrke og aktiviteter" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOSsamlet" text="Samlet sum for alle skåringer, hvis det er skåret 9=ukjent skal dette ikke regnes med i samlet verdi" comment="Health of the Nation Outcome Scales"/>
+         <code value="HoNOSCA1" text="Problemer med forstyrrende, antisosial eller aggressiv atferd" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA10" text="Problemer med forhold til jevnaldrende" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA11" text="Problemer med egenomsorg og uavhengighet" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA12" text="Problemer med familieliv og forhold til andre" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA13" text="Dårlig skoleframmøte" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA14" text="Problemer med kunnskap eller forståelse av egenarten av barnets/ungdommens vanskeligheter (i løpet av de siste to uker)" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA15" text="Problemer med mangel på informasjon om tilbud eller behandling av barnets/ungdommens vanskeligheter" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA2" text="Problemer med høyt aktivitetsnivå, oppmerksomhet eller konsentrasjon" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA3" text="Selvskade som ikke skyldes uhell" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA4" text="Problemer med alkohol-, stoff- eller løsemiddelmisbruk" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA5" text="Problemer med skole- eller språkferdigheter" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA6" text="Problemer pga fysisk sykdom eller funksjonshemming" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA7" text="Problemer knyttet til hallusinasjoner, vrangforestillinger eller unormale persepsjoner" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA8" text="Problemer med somatiske symptomer uten kjent organisk grunnlag" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+         <code value="HoNOSCA9" text="Problemer med emosjonelle og relaterte symptomer" comment="Health of the Nation Outcome Scales for Children and Adolescents"/>
+   </appinfo>
+</annotation>
+
+<!-- Class: Referanse til enhet -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Referanse til enhet' --> 
+<simpleType name="type_enhet">
+   <restriction base="string"/>  <!-- Kodeverk: 8476 Type enhet -->
+
+</simpleType>
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Referanse til enhet' --> 
+<annotation>
+   <appinfo>
+      <class name="Referanse til enhet"/> 
+      <attribute name="typeEnhet"/> 
+      <codingScheme name="Type enhet"/> 
+      <codingScheme OID="8476"/> 
+      <simpleT name="type_enhet"/> 
+         <code value="1" text="Behandlingssted" comment=""/>
+         <code value="2" text="Fagenhet" comment=""/>
+         <code value="3" text="Tjenesteenhet" comment=""/>
+         <code value="4" text="Klinikk" comment=""/>
+         <code value="5" text="Poliklinikk" comment=""/>
+         <code value="6" text="Post" comment=""/>
+         <code value="7" text="Avdeling" comment=""/>
+         <code value="8" text="Hjemmesykehus" comment=""/>
+         <code value="9" text="Helsestasjon- og skolehelsetjeneste" comment=""/>
+   </appinfo>
+</annotation>
+
+
+<!-- LEVEL 5 -->
+
+<!-- Class: Måleresultat -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+   <!-- dataType 'Kodet' -->
+   <simpleType name='Kodet' >
+      <restriction base= 'string'> 
+      </restriction> 
+   </simpleType>
+</schema>

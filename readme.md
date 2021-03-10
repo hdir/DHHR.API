@@ -95,7 +95,22 @@ XSD for IPLOS kan lastes ner herfra:
 
 
 ### HST melding
-Kommer så snart denne er tilgjenglig
+
+Dataformat for HST melding
+
+
+	Meldingstype: HST
+	Meldingsversjon: 56.0.0
+
+
+Swagger-fil kan lastes ned herfra:
+
+[https://app-messagein-dev.azurewebsites.net/swagger/index.html](https://app-messagein-dev.azurewebsites.net/swagger/index.html)
+
+
+XSD for HST kan lastes ner herfra:
+
+[message-spesifications/hst-56.0.0/XPR(hst).xsd](message-spesifications/hst-56.0.0/XPR(hst).xsd)
 
 
 
