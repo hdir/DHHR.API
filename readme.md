@@ -86,7 +86,7 @@ Dataformat for IPLOS melding
 
 Swagger-fil kan lastes ned herfra:
 
-[https://app-messagein-dev.azurewebsites.net/swagger/index.html](https://app-messagein-dev.azurewebsites.net/swagger/index.html)
+[https://app-messagein-dev.azurewebsites.net/swagger/index.html?urls.primaryName=Helsedir.MessageIn.WebApi.IPLOS%20v1](https://app-messagein-dev.azurewebsites.net/swagger/index.html?urls.primaryName=Helsedir.MessageIn.WebApi.IPLOS%20v1)
 
 
 XSD for IPLOS kan lastes ner herfra:
@@ -105,7 +105,7 @@ Dataformat for HST melding
 
 Swagger-fil kan lastes ned herfra:
 
-[https://app-messagein-dev.azurewebsites.net/swagger/index.html](https://app-messagein-dev.azurewebsites.net/swagger/index.html)
+[https://app-messagein-dev.azurewebsites.net/swagger/index.html?urls.primaryName=Helsedir.MessageIn.WebApi.HST%20v1](https://app-messagein-dev.azurewebsites.net/swagger/index.html?urls.primaryName=Helsedir.MessageIn.WebApi.HST%20v1)
 
 
 XSD for HST kan lastes ner herfra:
