@@ -29,11 +29,11 @@ namespace AuthenticationDemo
      */
     public class Program
     {
-        private static readonly string _kneikBaseUrl = "https://app-messagein-test.azurewebsites.net";
-        private static readonly string _helseIdBaseUrl = "https://helseid-sts.test.nhn.no";
-        private static readonly string _helseIdClientId = "00a04013-c336-46bd-b72f-4cc3ccf64d0c";
-        private static readonly string _pathToPrivateJWK = "private_jwk.json";
-        private static readonly string _pathToTestMessage = "test_message.json";
+        private const string _kneikBaseUrl = "https://app-messagein-test.azurewebsites.net";
+        private const string _helseIdBaseUrl = "https://helseid-sts.test.nhn.no";
+        private const string _helseIdClientId = "7279ab26-d3b2-4b80-b3a1-e86b49837461";
+        private const string _pathToPrivateJWK = "private_jwk.json";
+        private const string _pathToTestMessage = "test_message.json";
 
         static async Task Main()
         {
@@ -81,24 +81,26 @@ namespace AuthenticationDemo
         {
             var client = new HttpClient();
             var disco = await client.GetDiscoveryDocumentAsync(_helseIdBaseUrl).ConfigureAwait(false);
-
-            return await client.RequestTokenAsync(new IdentityModel.Client.TokenRequest
+            var tokenRespone = await client.RequestTokenAsync(new IdentityModel.Client.TokenRequest
             {
                 Address = disco.TokenEndpoint,
                 ClientId = _helseIdClientId,
                 GrantType = GrantTypes.ClientCredentials,
-                ClientAssertion = new ClientAssertion
-                {
-                    Type = ClientAssertionTypes.JwtBearer,
-                    Value = BuildAssertion(disco, _helseIdClientId)
-                }
+                ClientAssertion = BuildClientAssertion(disco, _helseIdClientId)
             }).ConfigureAwait(false);
+
+            if (!string.IsNullOrEmpty(tokenRespone.Error))
+            {
+                throw new InvalidOperationException($"HelseId token request failed. Error: {tokenRespone.Error}");
+            }
+
+            return tokenRespone;
         }
 
         // Builds client assertion with private JWK.
         // Will be used by HelseId to verify the client and its scopes.
         // By adding custom claims, you should be able to request different scopes in the JWT returned from HelseId.
-        private static string BuildAssertion(DiscoveryDocumentResponse disco, string clientId)
+        private static ClientAssertion BuildClientAssertion(DiscoveryDocumentResponse disco, string clientId)
         {
             var _claims = new List<Claim>
             {
@@ -110,7 +112,13 @@ namespace AuthenticationDemo
 
             var creds = new JwtSecurityToken(clientId, disco.TokenEndpoint, _claims, DateTime.UtcNow, DateTime.UtcNow.AddSeconds(60), GetCASigningCredentials());
             var handler = new JwtSecurityTokenHandler();
-            return handler.WriteToken(creds);
+            var assertion = new ClientAssertion
+            {
+                Type = ClientAssertionTypes.JwtBearer,
+                Value = handler.WriteToken(creds)
+            };
+
+            return assertion;
         }
 
         // Reads the private JWK and creates signing credentials
