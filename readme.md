@@ -219,7 +219,7 @@ Ulike miljøer og variabler pr miljø.
 - Prod: n/a
 
 
-## Eksemplekode
+## Eksempelkode
 Testklient som viser hvordan en benytter autentisering (HelseID "machine to machine") og innsending av melding via API-et er tilgjenglig for nedlasting.
 
 Last ned eksempelkode (.NET Core 5.0):
