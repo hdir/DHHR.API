@@ -12,6 +12,7 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 - [API metoder](#api-metoder)
 - [API returobjekter](#api-returobjekter)
 - [Miljøer](#miljøer)
+- [Eksempelkode](#Eksempelkode)
 - [Referanser](#referanser)
 
 ## Om tjenesten
@@ -217,6 +218,13 @@ Ulike miljøer og variabler pr miljø.
 - QA: n/a
 - Prod: n/a
 
+
+## Eksemplekode
+Testklient som viser hvordan en benytter autentisering (HelseID "machine to machine") og innsending av melding via API-et er tilgjenglig for nedlasting.
+
+Last ned eksempelkode (.NET Core 5.0):
+
+[https://github.com/hdir/DHHR.API/tree/master/demo-code/Dhhr.Kneik.Public.DemoCode](https://github.com/hdir/DHHR.API/tree/master/demo-code/Dhhr.Kneik.Public.DemoCode "https://github.com/hdir/DHHR.API/tree/master/demo-code/Dhhr.Kneik.Public.DemoCode")
 
 
 ## Referanser
