@@ -12,7 +12,7 @@ Dokumentasjon for hvordan en skal benytte API-løsningen for å avlevere melding
 - [API metoder](#api-metoder)
 - [API returobjekter](#api-returobjekter)
 - [Miljøer](#miljøer)
-- [Eksempelkode](#Eksempelkode)
+- [Eksempelkode](#eksempelkode)
 - [Referanser](#referanser)
 
 ## Om tjenesten
