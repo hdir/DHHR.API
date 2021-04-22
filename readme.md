@@ -203,20 +203,20 @@ Ulike miljøer og variabler pr miljø.
 
 ### API avlevering
 
-- Test/Dev: https://app-messagein-dev.azurewebsites.net/api
-- QA: n/a
-- Prod: n/a
+- Dev: https://app-messagein-dev.azurewebsites.net/api (Internett)
+- Test: https://hint-inet.utv.helsedir.no/proxy/api/kneik (Internett - tilgang må bestilles)
+- Pilot: https://hint.helsedirektoratet.no/proxy/api/kneik (Helsenett)
 
 ### Adresseregisteret
 
-- Test/Dev: register-web.test.nhn.no
-- QA: register.nhn.no
-- Prod: register.nhn.no
+- Dev: register-web.test.nhn.no (Internett)
+- Test: register-web.test.nhn.no (Internett)
+- Prod: register.nhn.no (Helsenett)
 
 ### HerId
-- Test/Dev: 8139520
-- QA: n/a
-- Prod: n/a
+- Dev: 8139520
+- Test: 8139520
+- Pilot: 159000
 
 
 ## Eksempelkode
