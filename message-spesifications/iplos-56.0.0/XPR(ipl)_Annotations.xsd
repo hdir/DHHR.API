@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Generated on 2021-09-02  13:36:10 at NPR -->
+<!-- Generated on 2021-04-22  19:57:15 at NPR -->
 <!-- Avdeling helseregistres meldinger -->
 <!-- Modul ipl  -->
 <!-- Skjema for Kravspesifikasjon - IPLOS i KPR  -->
@@ -12,7 +12,7 @@
     xmlns:nprx="http://www.npr.no/xmlstds/56_0_0" 
     xmlns:npr = "http://www.npr.no/xmlstds/56_0_0_ipl"
     targetNamespace = "http://www.npr.no/xmlstds/56_0_0_ipl"
-    version = "56.0.0.27"
+    version = "56.0.0.4"
     elementFormDefault = "qualified"
     attributeFormDefault="unqualified">
 
@@ -741,7 +741,8 @@
             <npr:xprAppInfo name="attributeShortName" value="statusNotifikasjon"/> 
             <npr:xprAppInfo name="attributeDataType" value="Kodet"/> 
             <npr:xprAppInfo name="attributeDoc" value="Angivelse av status på denne innrapporterte notifikasjonen"/> 
-            <npr:xprAppInfo name="attributeUse" value="Angivelsen gir føringer for hvordan mottaket håndterer opplysningene. Se eget kapittel om erstatt/suppler/annuller."/> 
+            <npr:xprAppInfo name="attributeUse" value="Angivelsen gir føringer for hvordan mottaket håndterer opplysningene. Foreløpig skal ikke kode T SpesTegnKorrigerSupplerSpesTegn benyttes. 
+For IPLOS: Se eget kapittel SpesTegnOm status på notifikasjonSpesTegn for detaljer om bruk av kodeverket."/> 
             <npr:xprAppInfo name="attributeStatus" value=""/> 
             <npr:xprAppInfo name="attributeComment" value=""/> 
             <npr:xprAppInfo name="nullsOK" value="False"/> 
@@ -932,7 +933,7 @@
             <npr:xprAppInfo name="attributeShortName" value="notifikasjonForrigeGUID"/> 
             <npr:xprAppInfo name="attributeDataType" value="guid"/> 
             <npr:xprAppInfo name="attributeDoc" value="Referanse til forrige notifikasjon"/> 
-            <npr:xprAppInfo name="attributeUse" value="Brukes til å sikre kompletthet"/> 
+            <npr:xprAppInfo name="attributeUse" value="Brukes til å sikre kompletthet. Første notifikasjon for en gitt rapporteringsenhet skal angis som Guid.Empty (tilsvarer verdien 00000000-0000-0000-0000-000000000000)"/> 
             <npr:xprAppInfo name="attributeStatus" value=""/> 
             <npr:xprAppInfo name="attributeComment" value=""/> 
             <npr:xprAppInfo name="nullsOK" value="False"/> 
@@ -984,17 +985,17 @@
 
       <!-- =======================================================  -->
       <!-- ==                                                   ==  -->
-      <!-- ==    Appinfo for  Løpenummer             ==  -->
+      <!-- ==    Appinfo for  Løpenummer notifikasjon             ==  -->
       <!-- ==                                                   ==  -->
       <!-- =======================================================  -->
       <annotation>
          <appinfo>
             <npr:xprAppInfo name="className" value="Notifikasjon"/> 
             <npr:xprAppInfo name="classShortName" value="Notifikasjon"/> 
-            <npr:xprAppInfo name="attributeName" value="Løpenummer"/> 
+            <npr:xprAppInfo name="attributeName" value="Løpenummer notifikasjon"/> 
             <npr:xprAppInfo name="attributeShortName" value="notifikasjonLopeNr"/> 
             <npr:xprAppInfo name="attributeDataType" value="String"/> 
-            <npr:xprAppInfo name="attributeDoc" value="Løpende nummerering av notifikasjoner - strengt stigende ved generering"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Løpenummer skal rapporteres i strengt stigende rekkefølge pr. kommune. Hvis det rapporteres flere hendelser i samme melding, er det en fordel om løpenumrene er sortert i stigende rekkefølge."/> 
             <npr:xprAppInfo name="attributeUse" value="Brukes for å sikre rekkefølge i forhold til lagring i EPJ"/> 
             <npr:xprAppInfo name="attributeStatus" value=""/> 
             <npr:xprAppInfo name="attributeComment" value=""/> 
@@ -1057,8 +1058,8 @@
             <npr:xprAppInfo name="attributeName" value="Referanse til annen notifikasjon"/> 
             <npr:xprAppInfo name="attributeShortName" value="notifikasjonRef"/> 
             <npr:xprAppInfo name="attributeDataType" value="guid"/> 
-            <npr:xprAppInfo name="attributeDoc" value="Referanse til en annen notifikasjon sin GUID"/> 
-            <npr:xprAppInfo name="attributeUse" value="Skal benyttes for alle statuser som ikke er N SpesTegnOriginalSpesTegn"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Referanse til en annen notifikasjon sin GUID."/> 
+            <npr:xprAppInfo name="attributeUse" value="Skal benyttes for alle statuser som ikke er N SpesTegnOriginalSpesTegn, og referansen skal alltid peke på en N SpesTegnOriginalSpesTegn."/> 
             <npr:xprAppInfo name="attributeStatus" value=""/> 
             <npr:xprAppInfo name="attributeComment" value=""/> 
             <npr:xprAppInfo name="nullsOK" value="False"/> 
@@ -1182,7 +1183,8 @@
             <npr:xprAppInfo name="attributeName" value="Telefon"/> 
             <npr:xprAppInfo name="attributeShortName" value="meldTelefon"/> 
             <npr:xprAppInfo name="attributeDataType" value="String"/> 
-            <npr:xprAppInfo name="attributeDoc" value="Kontaktpersonens telefonnummer."/> 
+            <npr:xprAppInfo name="attributeDoc" value="Kontaktpersonens telefonnummer.
+Kontaktperson som skal kunne åpne passordbeskyttede tilbakemeldinger, må rapportere gyldig mobilnummer."/> 
             <npr:xprAppInfo name="attributeUse" value=""/> 
             <npr:xprAppInfo name="attributeStatus" value=""/> 
             <npr:xprAppInfo name="attributeComment" value=""/> 
@@ -1632,7 +1634,7 @@
             <npr:xprAppInfo name="className" value="Tjeneste Start"/> 
             <npr:xprAppInfo name="classShortName" value="TjenesteStart"/> 
             <npr:xprAppInfo name="attributeName" value="Registreringstidspunkt"/> 
-            <npr:xprAppInfo name="attributeShortName" value="hendelseRegistrertTidspunkt"/> 
+            <npr:xprAppInfo name="attributeShortName" value="hendelseRegTid"/> 
             <npr:xprAppInfo name="attributeDataType" value="DateTime"/> 
             <npr:xprAppInfo name="attributeDoc" value="Det tidspunktet tjenestestart er registrert, eller tidspunktet det er registrert korreksjon/annullering på tjenestestart."/> 
             <npr:xprAppInfo name="attributeUse" value=""/> 
@@ -1645,7 +1647,7 @@
             <npr:xprAppInfo name="origin" value=""/> 
             <npr:xprAppInfo name="tooltip" value="0"/> 
             <npr:xprAppInfo name="example" value=""/> 
-            <npr:xprAppInfo name="ordinal" value="50"/> 
+            <npr:xprAppInfo name="ordinal" value="40"/> 
             <npr:xprAppInfo name="fixedValue" value=""/> 
             <npr:xprAppInfo name="ID" value="495"/> 
             <npr:xprAppInfo name="paragraph" value=""/> 
@@ -1696,9 +1698,9 @@
             <npr:xprAppInfo name="className" value="Tjeneste Start"/> 
             <npr:xprAppInfo name="classShortName" value="TjenesteStart"/> 
             <npr:xprAppInfo name="attributeName" value="Utøvende organisasjon"/> 
-            <npr:xprAppInfo name="attributeShortName" value="tjenesteOrgNrUtovende"/> 
+            <npr:xprAppInfo name="attributeShortName" value="tjenesteOrgNr"/> 
             <npr:xprAppInfo name="attributeDataType" value="String"/> 
-            <npr:xprAppInfo name="attributeDoc" value=""/> 
+            <npr:xprAppInfo name="attributeDoc" value="Organisasjonsnummer for organisasjon som utfører tjenesten"/> 
             <npr:xprAppInfo name="attributeUse" value=""/> 
             <npr:xprAppInfo name="attributeStatus" value=""/> 
             <npr:xprAppInfo name="attributeComment" value=""/> 
@@ -1773,7 +1775,7 @@
             <npr:xprAppInfo name="example" value=""/> 
             <npr:xprAppInfo name="ordinal" value="60"/> 
             <npr:xprAppInfo name="fixedValue" value=""/> 
-            <npr:xprAppInfo name="ID" value="485"/> 
+            <npr:xprAppInfo name="ID" value="496"/> 
             <npr:xprAppInfo name="paragraph" value=""/> 
             <!-- Kontroll av datatyper for attributter -->
             <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
@@ -1945,6 +1947,904 @@
       <!-- =======================================================  -->
       <annotation>
          <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp til"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppTil"/> 
+            <npr:xprAppInfo name="attributeName" value="Tjenestetype"/> 
+            <npr:xprAppInfo name="attributeShortName" value="tjenesteType"/> 
+            <npr:xprAppInfo name="attributeDataType" value="Kodet"/> 
+            <npr:xprAppInfo name="attributeDoc" value="En klassifikasjon av de tjenester som kommunen kan tilby innenfor pleie- og omsorg."/> 
+            <npr:xprAppInfo name="attributeUse" value="I første omgang ønskes følgende tjenestetyper rapportert:
+18 - Tidsbegrenset opphold - utredning/behandling
+19 - Tidsbegrenset opphold - habilitering/rehabilitering
+20 - Tidsbegrenset opphold - annet
+21 - Langtidsopphold i institusjon
+29 - Bolig som kommunen disponerer for helse- og omsorgsformål"/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value="Løsningen må utformes slik at det er enkelt å utvide med nye tjenestetyper"/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value="9151"/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="10"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="478"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="152"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Min 1 max 2 siffer"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[^\-?\d{1,2}$]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[@attributtNavn LIKE '%[^0-9]%' OR LEN(@attributtNavn) NOT BETWEEN 1 AND 2]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value="1"/> 
+            <npr:xprAppInfo name="validationDate" value="xPath:./@tjenesteStartDato"/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value=""/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Registreringstidspunkt             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp til"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppTil"/> 
+            <npr:xprAppInfo name="attributeName" value="Registreringstidspunkt"/> 
+            <npr:xprAppInfo name="attributeShortName" value="hendelseRegTid"/> 
+            <npr:xprAppInfo name="attributeDataType" value="DateTime"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Det tidspunktet midlertidig pause/stans i tjenesten opphører eller tidspunktet det er registrert korreksjon/annullering på SpesTegnMidlertidig stopp tilSpesTegn."/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="40"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="480"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="606"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Dato og tid evt. med millisekunder eller tidssone"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[@attributtNavn IS NOT NULL AND (ISDATE( LEFT(@attributtNavn,19) ) = 0 OR NOT (@attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]+[0-1][0-9]:[0-5][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]-[0-1][0-9]:[0-5][0-9]') OR LEFT( @attributtNavn, 2 ) NOT IN ('19','20'))]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value="1"/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value="xPath:/Melding/@uttakDato"/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Utøvende organisasjon             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp til"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppTil"/> 
+            <npr:xprAppInfo name="attributeName" value="Utøvende organisasjon"/> 
+            <npr:xprAppInfo name="attributeShortName" value="tjenesteOrgNr"/> 
+            <npr:xprAppInfo name="attributeDataType" value="String"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Organisasjonsnummer for organisasjon som utøver tjenesten"/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="True"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="50"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="481"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="2002"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Virksomhetsnummer"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value=""/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[^\d{9}0?$]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value=""/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Hendelsestidspunkt             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp til"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppTil"/> 
+            <npr:xprAppInfo name="attributeName" value="Hendelsestidspunkt"/> 
+            <npr:xprAppInfo name="attributeShortName" value="hendelseDato"/> 
+            <npr:xprAppInfo name="attributeDataType" value="Date"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Dato for SpesTegnMidlertidig stopp tilSpesTegn"/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="60"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="491"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="604"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Dato og Tid"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[(19\d{2}|20\d{2})-((0[1-9])|(1[0-2]))-((0[1-9])|([1-2][0-9])|(3[0-1]))T(([0-1][0-9])|(2[0-3])):([0-5][0-9]):([0-5][0-9])]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[@attributtNavn IS NOT NULL AND (ISDATE( @attributtNavn ) = 0 OR @attributtNavn NOT LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]' OR LEFT( @attributtNavn, 2 ) NOT IN ('19','20'))]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value="1"/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value="xPath:./@hendelseRegistrertTidspunkt"/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Tjeneste ID             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp til"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppTil"/> 
+            <npr:xprAppInfo name="attributeName" value="Tjeneste ID"/> 
+            <npr:xprAppInfo name="attributeShortName" value="tjenesteID"/> 
+            <npr:xprAppInfo name="attributeDataType" value="String"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Unik identifikasjon av tjeneste."/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="100"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="476"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="1999"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Streng"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[^.*$]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[1=2]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value=""/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Hendelse GUID             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp til"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppTil"/> 
+            <npr:xprAppInfo name="attributeName" value="Hendelse GUID"/> 
+            <npr:xprAppInfo name="attributeShortName" value="hendelseGUID"/> 
+            <npr:xprAppInfo name="attributeDataType" value="guid"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Globalt unik identifikator for en versjon av hendelsen."/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="True"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="110"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="475"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="501"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="GUID"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value=""/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})|(\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\})]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value=""/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Midlertidig stopp ID             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp til"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppTil"/> 
+            <npr:xprAppInfo name="attributeName" value="Midlertidig stopp ID"/> 
+            <npr:xprAppInfo name="attributeShortName" value="midlertidigStoppID"/> 
+            <npr:xprAppInfo name="attributeDataType" value="String"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Identifikator som kan benyttes for å koble sammen SpesTegnMidlertidig stopp fraSpesTegn og SpesTegnMidlertidig stopp tilSpesTegn i registret"/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="120"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="477"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="1999"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Streng"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[^.*$]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[1=2]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value=""/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Tjenestetype             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp fra"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppFra"/> 
+            <npr:xprAppInfo name="attributeName" value="Tjenestetype"/> 
+            <npr:xprAppInfo name="attributeShortName" value="tjenesteType"/> 
+            <npr:xprAppInfo name="attributeDataType" value="Kodet"/> 
+            <npr:xprAppInfo name="attributeDoc" value="En klassifikasjon av de tjenester som kommunen kan tilby innenfor pleie- og omsorg."/> 
+            <npr:xprAppInfo name="attributeUse" value="I første omgang ønskes følgende tjenestetyper rapportert:
+18 - Tidsbegrenset opphold - utredning/behandling
+19 - Tidsbegrenset opphold - habilitering/rehabilitering
+20 - Tidsbegrenset opphold - annet
+21 - Langtidsopphold i institusjon
+29 - Bolig som kommunen disponerer for helse- og omsorgsformål"/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value="Løsningen må utformes slik at det er enkelt å utvide med nye tjenestetyper"/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value="9151"/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="10"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="463"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="152"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Min 1 max 2 siffer"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[^\-?\d{1,2}$]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[@attributtNavn LIKE '%[^0-9]%' OR LEN(@attributtNavn) NOT BETWEEN 1 AND 2]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value="1"/> 
+            <npr:xprAppInfo name="validationDate" value="xPath:./@tjenesteStartDato"/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value=""/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Registreringstidspunkt             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp fra"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppFra"/> 
+            <npr:xprAppInfo name="attributeName" value="Registreringstidspunkt"/> 
+            <npr:xprAppInfo name="attributeShortName" value="hendelseRegTid"/> 
+            <npr:xprAppInfo name="attributeDataType" value="DateTime"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Det tidspunktet tjenesten ble satt på pause/stanset midlertidig, eller tidspunktet det er registrert korreksjon/annullering på SpesTegnMidlertidig stopp fraSpesTegn."/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="40"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="464"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="606"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Dato og tid evt. med millisekunder eller tidssone"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[@attributtNavn IS NOT NULL AND (ISDATE( LEFT(@attributtNavn,19) ) = 0 OR NOT (@attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]+[0-1][0-9]:[0-5][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]-[0-1][0-9]:[0-5][0-9]') OR LEFT( @attributtNavn, 2 ) NOT IN ('19','20'))]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value="1"/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value="xPath:/Melding/@uttakDato"/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Utøvende organisasjon             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp fra"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppFra"/> 
+            <npr:xprAppInfo name="attributeName" value="Utøvende organisasjon"/> 
+            <npr:xprAppInfo name="attributeShortName" value="tjenesteOrgNr"/> 
+            <npr:xprAppInfo name="attributeDataType" value="String"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Organisasjonsnummer for organisasjon som utøver tjenesten"/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="True"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="50"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="465"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="2002"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Virksomhetsnummer"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value=""/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[^\d{9}0?$]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value=""/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Hendelsestidspunkt             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp fra"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppFra"/> 
+            <npr:xprAppInfo name="attributeName" value="Hendelsestidspunkt"/> 
+            <npr:xprAppInfo name="attributeShortName" value="hendelseDato"/> 
+            <npr:xprAppInfo name="attributeDataType" value="Date"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Dato for SpesTegnMidlertidig stopp fraSpesTegn."/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="60"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="474"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="604"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Dato og Tid"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[(19\d{2}|20\d{2})-((0[1-9])|(1[0-2]))-((0[1-9])|([1-2][0-9])|(3[0-1]))T(([0-1][0-9])|(2[0-3])):([0-5][0-9]):([0-5][0-9])]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[@attributtNavn IS NOT NULL AND (ISDATE( @attributtNavn ) = 0 OR @attributtNavn NOT LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]' OR LEFT( @attributtNavn, 2 ) NOT IN ('19','20'))]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value="1"/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value="xPath:./@hendelseRegistrertTidspunkt"/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Tjeneste ID             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp fra"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppFra"/> 
+            <npr:xprAppInfo name="attributeName" value="Tjeneste ID"/> 
+            <npr:xprAppInfo name="attributeShortName" value="tjenesteID"/> 
+            <npr:xprAppInfo name="attributeDataType" value="String"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Unik identifikasjon av tjeneste."/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="100"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="461"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="1999"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Streng"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[^.*$]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[1=2]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value=""/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Hendelse GUID             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp fra"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppFra"/> 
+            <npr:xprAppInfo name="attributeName" value="Hendelse GUID"/> 
+            <npr:xprAppInfo name="attributeShortName" value="hendelseGUID"/> 
+            <npr:xprAppInfo name="attributeDataType" value="guid"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Globalt unik identifikator for en versjon av hendelsen."/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="True"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="110"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="460"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="501"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="GUID"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value=""/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})|(\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\})]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value=""/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Midlertidig stopp ID             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Midlertidig stopp fra"/> 
+            <npr:xprAppInfo name="classShortName" value="MidlertidigStoppFra"/> 
+            <npr:xprAppInfo name="attributeName" value="Midlertidig stopp ID"/> 
+            <npr:xprAppInfo name="attributeShortName" value="midlertidigStoppID"/> 
+            <npr:xprAppInfo name="attributeDataType" value="String"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Identifikator som kan benyttes for å koble sammen SpesTegnMidlertidig stopp fraSpesTegn og SpesTegnMidlertidig stopp tilSpesTegn i registret"/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="120"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="462"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="1999"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Streng"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[^.*$]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[1=2]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value=""/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Tjenestetype             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
             <npr:xprAppInfo name="className" value="Tjenesteutfører endret"/> 
             <npr:xprAppInfo name="classShortName" value="TjenesteutforerEndret"/> 
             <npr:xprAppInfo name="attributeName" value="Tjenestetype"/> 
@@ -2017,7 +2917,7 @@
             <npr:xprAppInfo name="className" value="Tjenesteutfører endret"/> 
             <npr:xprAppInfo name="classShortName" value="TjenesteutforerEndret"/> 
             <npr:xprAppInfo name="attributeName" value="Registreringstidspunkt"/> 
-            <npr:xprAppInfo name="attributeShortName" value="hendelseRegistrertTidspunkt"/> 
+            <npr:xprAppInfo name="attributeShortName" value="hendelseRegTid"/> 
             <npr:xprAppInfo name="attributeDataType" value="DateTime"/> 
             <npr:xprAppInfo name="attributeDoc" value="Det tidspunktet en ny tjenesteutfører er registrert, eller tidspunktet det er registrert korreksjon/annullering på endret tjenesteutfører."/> 
             <npr:xprAppInfo name="attributeUse" value=""/> 
@@ -2030,9 +2930,9 @@
             <npr:xprAppInfo name="origin" value=""/> 
             <npr:xprAppInfo name="tooltip" value="0"/> 
             <npr:xprAppInfo name="example" value=""/> 
-            <npr:xprAppInfo name="ordinal" value="50"/> 
+            <npr:xprAppInfo name="ordinal" value="40"/> 
             <npr:xprAppInfo name="fixedValue" value=""/> 
-            <npr:xprAppInfo name="ID" value="469"/> 
+            <npr:xprAppInfo name="ID" value="68"/> 
             <npr:xprAppInfo name="paragraph" value=""/> 
             <!-- Kontroll av datatyper for attributter -->
             <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
@@ -2081,7 +2981,7 @@
             <npr:xprAppInfo name="className" value="Tjenesteutfører endret"/> 
             <npr:xprAppInfo name="classShortName" value="TjenesteutforerEndret"/> 
             <npr:xprAppInfo name="attributeName" value="Utøvende organisasjon"/> 
-            <npr:xprAppInfo name="attributeShortName" value="tjenesteOrgNrUtovende"/> 
+            <npr:xprAppInfo name="attributeShortName" value="tjenesteOrgNr"/> 
             <npr:xprAppInfo name="attributeDataType" value="String"/> 
             <npr:xprAppInfo name="attributeDoc" value="Organisasjonsnummer for organisasjon som utøver tjenesten"/> 
             <npr:xprAppInfo name="attributeUse" value=""/> 
@@ -2089,7 +2989,7 @@
             <npr:xprAppInfo name="attributeComment" value=""/> 
             <npr:xprAppInfo name="nullsOK" value="True"/> 
             <npr:xprAppInfo name="primaryKey" value="False"/> 
-            <npr:xprAppInfo name="cardinality" value="0..1"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
             <npr:xprAppInfo name="codeOID" value=""/> 
             <npr:xprAppInfo name="origin" value=""/> 
             <npr:xprAppInfo name="tooltip" value="0"/> 
@@ -2112,8 +3012,9 @@
             <npr:xprAppInfo name="handlingTypeID" value="9"/> 
             <!-- Handling: ="Ingen handling" --> 
             <!-- Kontroll av obligatoriske attributter -->
-            <npr:xprAppInfo name="merketForObligat" value=""/> 
-            <npr:xprAppInfo name="handlingObligatID" value=""/> 
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
             <!-- Kontroll av kodeverk knyttet til attributter -->
             <npr:xprAppInfo name="merketForKodeverk" value=""/> 
             <npr:xprAppInfo name="validationDate" value=""/> 
@@ -2457,6 +3358,70 @@
 
       <!-- =======================================================  -->
       <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Registreringstidspunkt             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Tjeneste Slutt"/> 
+            <npr:xprAppInfo name="classShortName" value="TjenesteSlutt"/> 
+            <npr:xprAppInfo name="attributeName" value="Registreringstidspunkt"/> 
+            <npr:xprAppInfo name="attributeShortName" value="hendelseRegTid"/> 
+            <npr:xprAppInfo name="attributeDataType" value="DateTime"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Det tidspunktet tjenesteslutt ble registrert, eller tidspunktet det er registrert korreksjon/annullering av tjenesteslutt"/> 
+            <npr:xprAppInfo name="attributeUse" value=""/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value=""/> 
+            <npr:xprAppInfo name="ordinal" value="40"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="494"/> 
+            <npr:xprAppInfo name="paragraph" value=""/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="606"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Dato og tid evt. med millisekunder eller tidssone"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[@attributtNavn IS NOT NULL AND (ISDATE( LEFT(@attributtNavn,19) ) = 0 OR NOT (@attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]+[0-1][0-9]:[0-5][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]-[0-1][0-9]:[0-5][0-9]') OR LEFT( @attributtNavn, 2 ) NOT IN ('19','20'))]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value="1"/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value="xPath:/Melding/@uttakDato"/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
       <!-- ==    Appinfo for  Utøvende organisasjon             ==  -->
       <!-- ==                                                   ==  -->
       <!-- =======================================================  -->
@@ -2465,7 +3430,7 @@
             <npr:xprAppInfo name="className" value="Tjeneste Slutt"/> 
             <npr:xprAppInfo name="classShortName" value="TjenesteSlutt"/> 
             <npr:xprAppInfo name="attributeName" value="Utøvende organisasjon"/> 
-            <npr:xprAppInfo name="attributeShortName" value="tjenesteOrgNrUtovende"/> 
+            <npr:xprAppInfo name="attributeShortName" value="tjenesteOrgNr"/> 
             <npr:xprAppInfo name="attributeDataType" value="String"/> 
             <npr:xprAppInfo name="attributeDoc" value="Organisasjonsnummer for organisasjon som utfører tjenesten"/> 
             <npr:xprAppInfo name="attributeUse" value=""/> 
@@ -2507,70 +3472,6 @@
             <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
             <npr:xprAppInfo name="valueRangeFrom" value=""/> 
             <npr:xprAppInfo name="valueRangeTo" value=""/> 
-            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
-            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
-            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
-            <npr:xprAppInfo name="polygon" value=""/> 
-            <!-- Module constraints -->
-            <!-- No constraints -->
-         </appinfo>
-      </annotation>
-      <!--  -->
-
-      <!-- =======================================================  -->
-      <!-- ==                                                   ==  -->
-      <!-- ==    Appinfo for  Registreringstidspunkt             ==  -->
-      <!-- ==                                                   ==  -->
-      <!-- =======================================================  -->
-      <annotation>
-         <appinfo>
-            <npr:xprAppInfo name="className" value="Tjeneste Slutt"/> 
-            <npr:xprAppInfo name="classShortName" value="TjenesteSlutt"/> 
-            <npr:xprAppInfo name="attributeName" value="Registreringstidspunkt"/> 
-            <npr:xprAppInfo name="attributeShortName" value="hendelseRegistrertTidspunkt"/> 
-            <npr:xprAppInfo name="attributeDataType" value="DateTime"/> 
-            <npr:xprAppInfo name="attributeDoc" value="Det tidspunktet tjenesteslutt ble registrert, eller tidspunktet det er registrert korreksjon/annullering av tjenesteslutt"/> 
-            <npr:xprAppInfo name="attributeUse" value=""/> 
-            <npr:xprAppInfo name="attributeStatus" value=""/> 
-            <npr:xprAppInfo name="attributeComment" value=""/> 
-            <npr:xprAppInfo name="nullsOK" value="False"/> 
-            <npr:xprAppInfo name="primaryKey" value="False"/> 
-            <npr:xprAppInfo name="cardinality" value="1"/> 
-            <npr:xprAppInfo name="codeOID" value=""/> 
-            <npr:xprAppInfo name="origin" value=""/> 
-            <npr:xprAppInfo name="tooltip" value="0"/> 
-            <npr:xprAppInfo name="example" value=""/> 
-            <npr:xprAppInfo name="ordinal" value="50"/> 
-            <npr:xprAppInfo name="fixedValue" value=""/> 
-            <npr:xprAppInfo name="ID" value="494"/> 
-            <npr:xprAppInfo name="paragraph" value=""/> 
-            <!-- Kontroll av datatyper for attributter -->
-            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
-            <npr:xprAppInfo name="datatypeID" value="606"/> 
-            <npr:xprAppInfo name="datatypeNavn" value="Dato og tid evt. med millisekunder eller tidssone"/> 
-            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
-            <npr:xprAppInfo name="regex">
-               <![CDATA[]]> 
-            </npr:xprAppInfo>
-            <npr:xprAppInfo name="sql">
-               <![CDATA[@attributtNavn IS NOT NULL AND (ISDATE( LEFT(@attributtNavn,19) ) = 0 OR NOT (@attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9].[0-9][0-9][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]+[0-1][0-9]:[0-5][0-9]' OR @attributtNavn LIKE '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]T[0-9][0-9]:[0-9][0-9]:[0-9][0-9]-[0-1][0-9]:[0-5][0-9]') OR LEFT( @attributtNavn, 2 ) NOT IN ('19','20'))]]> 
-            </npr:xprAppInfo>
-            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
-            <!-- Handling: ="Ingen handling" --> 
-            <!-- Kontroll av obligatoriske attributter -->
-            <npr:xprAppInfo name="merketForObligat" value="1"/> 
-            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
-            <!-- Handling: ="Ingen handling" --> 
-            <!-- Kontroll av kodeverk knyttet til attributter -->
-            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
-            <npr:xprAppInfo name="validationDate" value=""/> 
-            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
-            <!-- Kontroll av verdi til attributter mot min max verdi -->
-            <npr:xprAppInfo name="merketForRangeCheck" value="1"/> 
-            <npr:xprAppInfo name="handlingRangeCheckID" value="9"/> 
-            <!-- Handling: ="Ingen handling" --> 
-            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
-            <npr:xprAppInfo name="valueRangeTo" value="xPath:/Melding/@uttakDato"/> 
             <!-- Kontroll av om et koordinat er innenfor et polygon  -->
             <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
             <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
@@ -2657,7 +3558,7 @@
             <npr:xprAppInfo name="attributeName" value="Tjeneste ID"/> 
             <npr:xprAppInfo name="attributeShortName" value="tjenesteID"/> 
             <npr:xprAppInfo name="attributeDataType" value="String"/> 
-            <npr:xprAppInfo name="attributeDoc" value="Unik identifikasjon av tjeneste. En tjeneste - tjeneste som starter og løper med eventuelle midl.stopp, revuderinger av vedtak, endringer i omfang/resstid,   og /eller org.nummer, frem til det registreres sluttdato. En rullerende tjeneste som er representert med ett vedtak i EPJ er en tjeneste, selv det er opphold mellom tjenesteperiodene. "/> 
+            <npr:xprAppInfo name="attributeDoc" value="Unik identifikasjon av tjeneste."/> 
             <npr:xprAppInfo name="attributeUse" value=""/> 
             <npr:xprAppInfo name="attributeStatus" value=""/> 
             <npr:xprAppInfo name="attributeComment" value=""/> 
@@ -2767,7 +3668,9 @@
             <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
             <npr:xprAppInfo name="polygon" value=""/> 
             <!-- Module constraints -->
-            <!-- No constraints -->
+            <npr:xprAppInfo name="moduleConstraint" value="O"/> 
+            <npr:xprAppInfo name="moduleComment" value=""/> 
+            <!-- Obligatorisk -->
          </appinfo>
       </annotation>
       <!--  -->
@@ -2972,7 +3875,7 @@
             <npr:xprAppInfo name="className" value="Bruker/pasient"/> 
             <npr:xprAppInfo name="classShortName" value="Bruker"/> 
             <npr:xprAppInfo name="attributeName" value="Bydel"/> 
-            <npr:xprAppInfo name="attributeShortName" value="kommuneBydel"/> 
+            <npr:xprAppInfo name="attributeShortName" value="bydel"/> 
             <npr:xprAppInfo name="attributeDataType" value="bydelNr"/> 
             <npr:xprAppInfo name="attributeDoc" value="Unik identifikator for bydel - angitt av rapporterende enhet"/> 
             <npr:xprAppInfo name="attributeUse" value=""/> 
@@ -3002,67 +3905,6 @@
             </npr:xprAppInfo>
             <npr:xprAppInfo name="handlingTypeID" value="9"/> 
             <!-- Handling: ="Ingen handling" --> 
-            <!-- Kontroll av obligatoriske attributter -->
-            <npr:xprAppInfo name="merketForObligat" value=""/> 
-            <npr:xprAppInfo name="handlingObligatID" value=""/> 
-            <!-- Kontroll av kodeverk knyttet til attributter -->
-            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
-            <npr:xprAppInfo name="validationDate" value=""/> 
-            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
-            <!-- Kontroll av verdi til attributter mot min max verdi -->
-            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
-            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
-            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
-            <npr:xprAppInfo name="valueRangeTo" value=""/> 
-            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
-            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
-            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
-            <npr:xprAppInfo name="polygon" value=""/> 
-            <!-- Module constraints -->
-            <!-- No constraints -->
-         </appinfo>
-      </annotation>
-      <!--  -->
-
-      <!-- =======================================================  -->
-      <!-- ==                                                   ==  -->
-      <!-- ==    Appinfo for  Offisiell person identifikasjon             ==  -->
-      <!-- ==                                                   ==  -->
-      <!-- =======================================================  -->
-      <annotation>
-         <appinfo>
-            <npr:xprAppInfo name="className" value="Bruker/pasient"/> 
-            <npr:xprAppInfo name="classShortName" value="Bruker"/> 
-            <npr:xprAppInfo name="attributeName" value="Offisiell person identifikasjon"/> 
-            <npr:xprAppInfo name="attributeShortName" value="fid"/> 
-            <npr:xprAppInfo name="attributeDataType" value="String"/> 
-            <npr:xprAppInfo name="attributeDoc" value="Offisiell personidentifikasjon."/> 
-            <npr:xprAppInfo name="attributeUse" value="Pasienter som i rapporteringsøyeblikket ikke har noen form for gyldig fødselsnummer skal rapporteres med fødselsdato med format ddmmyy og med Type person identifikasjon  (typeID) lik 9 Annet."/> 
-            <npr:xprAppInfo name="attributeStatus" value=""/> 
-            <npr:xprAppInfo name="attributeComment" value=""/> 
-            <npr:xprAppInfo name="nullsOK" value="False"/> 
-            <npr:xprAppInfo name="primaryKey" value="False"/> 
-            <npr:xprAppInfo name="cardinality" value="0..1"/> 
-            <npr:xprAppInfo name="codeOID" value=""/> 
-            <npr:xprAppInfo name="origin" value=""/> 
-            <npr:xprAppInfo name="tooltip" value="0"/> 
-            <npr:xprAppInfo name="example" value="Norsk fødselsnummer, nødnummer eller D-nummer"/> 
-            <npr:xprAppInfo name="ordinal" value="22"/> 
-            <npr:xprAppInfo name="fixedValue" value=""/> 
-            <npr:xprAppInfo name="ID" value="680"/> 
-            <npr:xprAppInfo name="paragraph" value="1-6-1a"/> 
-            <!-- Kontroll av datatyper for attributter -->
-            <npr:xprAppInfo name="merketForTypesjekk" value=""/> 
-            <npr:xprAppInfo name="datatypeID" value=""/> 
-            <npr:xprAppInfo name="datatypeNavn" value="NULL"/> 
-            <npr:xprAppInfo name="datatypeUttrykk" value="NULL"/> 
-            <npr:xprAppInfo name="regex">
-               <![CDATA[NULL]]> 
-            </npr:xprAppInfo>
-            <npr:xprAppInfo name="sql">
-               <![CDATA[NULL]]> 
-            </npr:xprAppInfo>
-            <npr:xprAppInfo name="handlingTypeID" value=""/> 
             <!-- Kontroll av obligatoriske attributter -->
             <npr:xprAppInfo name="merketForObligat" value=""/> 
             <npr:xprAppInfo name="handlingObligatID" value=""/> 
@@ -3157,6 +3999,69 @@ For personer som ikke er bosatt i Norge benyttes:.
 
       <!-- =======================================================  -->
       <!-- ==                                                   ==  -->
+      <!-- ==    Appinfo for  Offisiell person identifikasjon             ==  -->
+      <!-- ==                                                   ==  -->
+      <!-- =======================================================  -->
+      <annotation>
+         <appinfo>
+            <npr:xprAppInfo name="className" value="Bruker/pasient"/> 
+            <npr:xprAppInfo name="classShortName" value="Bruker"/> 
+            <npr:xprAppInfo name="attributeName" value="Offisiell person identifikasjon"/> 
+            <npr:xprAppInfo name="attributeShortName" value="fid"/> 
+            <npr:xprAppInfo name="attributeDataType" value="String"/> 
+            <npr:xprAppInfo name="attributeDoc" value="Offisiell personidentifikasjon."/> 
+            <npr:xprAppInfo name="attributeUse" value="Pasienter som i rapporteringsøyeblikket ikke har noen form for gyldig fødselsnummer skal rapporteres med fødselsdato med format ddmmyy og med Type person identifikasjon  (typeID) lik 9 Annet."/> 
+            <npr:xprAppInfo name="attributeStatus" value=""/> 
+            <npr:xprAppInfo name="attributeComment" value=""/> 
+            <npr:xprAppInfo name="nullsOK" value="False"/> 
+            <npr:xprAppInfo name="primaryKey" value="False"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="codeOID" value=""/> 
+            <npr:xprAppInfo name="origin" value=""/> 
+            <npr:xprAppInfo name="tooltip" value="0"/> 
+            <npr:xprAppInfo name="example" value="Norsk fødselsnummer, nødnummer eller D-nummer"/> 
+            <npr:xprAppInfo name="ordinal" value="30"/> 
+            <npr:xprAppInfo name="fixedValue" value=""/> 
+            <npr:xprAppInfo name="ID" value="501"/> 
+            <npr:xprAppInfo name="paragraph" value="1-6-1a"/> 
+            <!-- Kontroll av datatyper for attributter -->
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="1020"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Streng max 20 tegn"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
+            <npr:xprAppInfo name="regex">
+               <![CDATA[^.{0,20}$]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="sql">
+               <![CDATA[LEN( @attributtNavn ) > 20]]> 
+            </npr:xprAppInfo>
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
+            <!-- Kontroll av obligatoriske attributter -->
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="1"/> 
+            <!-- Handling: ="Slettemerk melding" --> 
+            <!-- Kontroll av kodeverk knyttet til attributter -->
+            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
+            <npr:xprAppInfo name="validationDate" value=""/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <!-- Kontroll av verdi til attributter mot min max verdi -->
+            <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
+            <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 
+            <npr:xprAppInfo name="valueRangeFrom" value=""/> 
+            <npr:xprAppInfo name="valueRangeTo" value=""/> 
+            <!-- Kontroll av om et koordinat er innenfor et polygon  -->
+            <npr:xprAppInfo name="merketForKoordinatSjekk" value=""/> 
+            <npr:xprAppInfo name="handlingKoordinatSjekkID" value=""/> 
+            <npr:xprAppInfo name="polygon" value=""/> 
+            <!-- Module constraints -->
+            <!-- No constraints -->
+         </appinfo>
+      </annotation>
+      <!--  -->
+
+      <!-- =======================================================  -->
+      <!-- ==                                                   ==  -->
       <!-- ==    Appinfo for  Type person identifikasjon             ==  -->
       <!-- ==                                                   ==  -->
       <!-- =======================================================  -->
@@ -3173,34 +4078,37 @@ For personer som ikke er bosatt i Norge benyttes:.
             <npr:xprAppInfo name="attributeComment" value="Kun de tre første kodene og kode 9 er gyldige. NPR tilrettelegger nå for å kunne ta imot DUF-nummer (10) og Felles hjelpenummer (12)."/> 
             <npr:xprAppInfo name="nullsOK" value="False"/> 
             <npr:xprAppInfo name="primaryKey" value="False"/> 
-            <npr:xprAppInfo name="cardinality" value="0..1"/> 
+            <npr:xprAppInfo name="cardinality" value="1"/> 
             <npr:xprAppInfo name="codeOID" value="9032"/> 
             <npr:xprAppInfo name="origin" value=""/> 
             <npr:xprAppInfo name="tooltip" value="0"/> 
             <npr:xprAppInfo name="example" value=""/> 
             <npr:xprAppInfo name="ordinal" value="33"/> 
             <npr:xprAppInfo name="fixedValue" value=""/> 
-            <npr:xprAppInfo name="ID" value="681"/> 
+            <npr:xprAppInfo name="ID" value="502"/> 
             <npr:xprAppInfo name="paragraph" value="1-6-1a"/> 
             <!-- Kontroll av datatyper for attributter -->
-            <npr:xprAppInfo name="merketForTypesjekk" value=""/> 
-            <npr:xprAppInfo name="datatypeID" value=""/> 
-            <npr:xprAppInfo name="datatypeNavn" value="NULL"/> 
-            <npr:xprAppInfo name="datatypeUttrykk" value="NULL"/> 
+            <npr:xprAppInfo name="merketForTypesjekk" value="1"/> 
+            <npr:xprAppInfo name="datatypeID" value="1020"/> 
+            <npr:xprAppInfo name="datatypeNavn" value="Streng max 20 tegn"/> 
+            <npr:xprAppInfo name="datatypeUttrykk" value="SQL"/> 
             <npr:xprAppInfo name="regex">
-               <![CDATA[NULL]]> 
+               <![CDATA[^.{0,20}$]]> 
             </npr:xprAppInfo>
             <npr:xprAppInfo name="sql">
-               <![CDATA[NULL]]> 
+               <![CDATA[LEN( @attributtNavn ) > 20]]> 
             </npr:xprAppInfo>
-            <npr:xprAppInfo name="handlingTypeID" value=""/> 
+            <npr:xprAppInfo name="handlingTypeID" value="9"/> 
+            <!-- Handling: ="Ingen handling" --> 
             <!-- Kontroll av obligatoriske attributter -->
-            <npr:xprAppInfo name="merketForObligat" value=""/> 
-            <npr:xprAppInfo name="handlingObligatID" value=""/> 
+            <npr:xprAppInfo name="merketForObligat" value="1"/> 
+            <npr:xprAppInfo name="handlingObligatID" value="1"/> 
+            <!-- Handling: ="Slettemerk melding" --> 
             <!-- Kontroll av kodeverk knyttet til attributter -->
-            <npr:xprAppInfo name="merketForKodeverk" value=""/> 
-            <npr:xprAppInfo name="validationDate" value=""/> 
-            <npr:xprAppInfo name="handlingKodeverkID" value=""/> 
+            <npr:xprAppInfo name="merketForKodeverk" value="1"/> 
+            <npr:xprAppInfo name="validationDate" value="xPath:/Melding/@uttakDato"/> 
+            <npr:xprAppInfo name="handlingKodeverkID" value="2"/> 
+            <!-- Handling: ="Slettemerk rad med underelementer" --> 
             <!-- Kontroll av verdi til attributter mot min max verdi -->
             <npr:xprAppInfo name="merketForRangeCheck" value=""/> 
             <npr:xprAppInfo name="handlingRangeCheckID" value=""/> 

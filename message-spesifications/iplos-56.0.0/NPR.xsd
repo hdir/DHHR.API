@@ -47,7 +47,7 @@
 	</simpleType>
 	<simpleType name="guid">
 		<annotation>
-			<documentation xml:lang="no">       representasjonen av en GUID, generelt en unik id paa et element</documentation>
+			<documentation xml:lang="no">Representasjonen av en GUID, generelt en unik id paa et element</documentation>
 		</annotation>
 		<restriction base="string">
 			<pattern value="([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})|(\{[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\})"/>

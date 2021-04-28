@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Generated on 2021-09-02  13:36:10 at NPR -->
+<!-- Generated on 2021-04-22  19:57:15 at NPR -->
 <!-- Avdeling helseregistres meldinger -->
 <!-- Modul ipl  -->
 <!-- Skjema for Kravspesifikasjon - IPLOS i KPR  -->
@@ -12,7 +12,7 @@
     xmlns:nprx="http://www.npr.no/xmlstds/56_0_0" 
     xmlns:npr = "http://www.npr.no/xmlstds/56_0_0_ipl"
     targetNamespace = "http://www.npr.no/xmlstds/56_0_0_ipl"
-    version = "56.0.0.27"
+    version = "56.0.0.4"
     elementFormDefault = "qualified"
     attributeFormDefault="unqualified">
    <import namespace="http://www.npr.no/xmlstds/56_0_0" schemaLocation="NPR.xsd"/>
@@ -45,9 +45,9 @@
       <codingScheme name="Meldingstype"/> 
       <codingScheme OID="7371"/> 
       <simpleT name="meldingstype"/> 
-         <code value="E" text="Endringsmelding" comment=""/>
          <code value="B" text="Satsvis melding" comment=""/>
          <code value="K" text="Melding for kontinuerlige oppdateringer" comment=""/>
+         <code value="E" text="Endringsmelding" comment=""/>
    </appinfo>
 </annotation>
 
@@ -79,9 +79,9 @@
       <codingScheme OID="7316"/> 
       <simpleT name="status_notifikasjon"/> 
          <code value="N" text="Original" comment="Ny hendelse"/>
-         <code value="M" text="Erstatt" comment="Korrigering av original hendelse med ny informasjon som erstatter tilvarende original informasjon"/>
-         <code value="T" text="Suppler" comment="Korrigering av original hendelse med tilleggsinformasjon"/>
-         <code value="C" text="Annuler" comment="Annulering av original hendelse"/>
+         <code value="M" text="KorrigerErstatt" comment="Korrigering av original hendelse med ny informasjon som erstatter tilvarende original informasjon"/>
+         <code value="T" text="KorrigerSuppler" comment="Korrigering av original hendelse med tilleggsinformasjon"/>
+         <code value="C" text="KorrigerAnnuller" comment="Annullering av original hendelse"/>
    </appinfo>
 </annotation>
 
@@ -184,8 +184,47 @@
          <code value="22" text="Nattopphold i institusjon" comment=""/>
          <code value="21" text="Langtidsopphold i institusjon" comment=""/>
          <code value="25" text="Kommunal øyeblikkelig hjelp - døgnopphold" comment=""/>
+         <code value="23" text="Skadeavvergende tiltak i nødssituasjoner" comment="Utgått. Vedtak/avgjørelse fattet etter helse- og omsorgstjenesteloven kap. 9, § 9-5, tredje ledd bokstav a."/>
+         <code value="14" text="Planlagte tiltak" comment="Utgått. Vedtak om bruk av tvang og makt (helse- og omsorgstjenesteloven kap. 9, § 9-5, tredje ledd bokstav b og c)."/>
+         <code value="24" text="Helsehjelp med tvang" comment="Utgått. Pasientrettighetsloven (kapittel 4 A)"/>
+         <code value="6" text="Trygghetsalarm" comment="Utgått. Erstattet av kodeverk 9346"/>
+         <code value="26" text="Lokaliseringsteknologi (GPS)" comment="Utgått. Erstattet av kodeverk 9346"/>
+         <code value="27" text="Elektronisk medisineringsstøtte" comment="Utgått. Erstattet av kodeverk 9346"/>
+         <code value="28" text="Digitalt tilsyn" comment="Utgått. Erstattet av kodeverk 9346"/>
    </appinfo>
 </annotation>
+
+<!-- Class: Midlertidig stopp til -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Midlertidig stopp til' --> 
+<!-- simpleType for  iPLOS_tjenestetype written before    -->
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Midlertidig stopp til' --> 
+<!-- Appinfo for  IPLOS tjenestetype written before    -->
+
+<!-- Class: Midlertidig stopp fra -->
+   
+
+
+   <!--     A P P I N F O     -->
+   
+
+
+
+ <!-- Coding schemes as simpleTypes without enumerations in the class: 'Midlertidig stopp fra' --> 
+<!-- simpleType for  iPLOS_tjenestetype written before    -->
+
+
+ <!-- Appinfo for Coding schemes in the class: 'Midlertidig stopp fra' --> 
+<!-- Appinfo for  IPLOS tjenestetype written before    -->
 
 <!-- Class: Tjenesteutfører endret -->
    
@@ -232,30 +271,17 @@
 
 
  <!-- Coding schemes as simpleTypes without enumerations in the class: 'Bruker/pasient' --> 
-<simpleType name="kjonn">
-   <restriction base="string"/>  <!-- Kodeverk: 3101 Kjønn -->
-
-</simpleType>
 <simpleType name="type_personidentifikasjon">
    <restriction base="string"/>  <!-- Kodeverk: 9032 Type personidentifikasjon -->
+
+</simpleType>
+<simpleType name="kjonn">
+   <restriction base="string"/>  <!-- Kodeverk: 3101 Kjønn -->
 
 </simpleType>
 
 
  <!-- Appinfo for Coding schemes in the class: 'Bruker/pasient' --> 
-<annotation>
-   <appinfo>
-      <class name="Bruker/pasient"/> 
-      <attribute name="kjonn"/> 
-      <codingScheme name="Kjønn"/> 
-      <codingScheme OID="3101"/> 
-      <simpleT name="kjonn"/> 
-         <code value="0" text="Ikke kjent" comment=""/>
-         <code value="1" text="Mann" comment=""/>
-         <code value="2" text="Kvinne" comment=""/>
-         <code value="9" text="Ikke spesifisert" comment=""/>
-   </appinfo>
-</annotation>
 <annotation>
    <appinfo>
       <class name="Bruker/pasient"/> 
@@ -274,6 +300,19 @@
          <code value="9" text="Annet" comment=""/>
          <code value="10" text="DUF-nummer" comment="Database for utlendingsforvaltningen"/>
          <code value="12" text="Felles hjelpenummer (FH-nummer)" comment=""/>
+   </appinfo>
+</annotation>
+<annotation>
+   <appinfo>
+      <class name="Bruker/pasient"/> 
+      <attribute name="kjonn"/> 
+      <codingScheme name="Kjønn"/> 
+      <codingScheme OID="3101"/> 
+      <simpleT name="kjonn"/> 
+         <code value="0" text="Ikke kjent" comment=""/>
+         <code value="1" text="Mann" comment=""/>
+         <code value="2" text="Kvinne" comment=""/>
+         <code value="9" text="Ikke spesifisert" comment=""/>
    </appinfo>
 </annotation>
    <!-- dataType 'Kodet' -->

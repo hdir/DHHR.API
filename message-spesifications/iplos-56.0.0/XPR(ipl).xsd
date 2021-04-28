@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Generated on 2021-09-02  13:36:10 at NPR -->
+<!-- Generated on 2021-04-22  19:57:15 at NPR -->
 <!-- Avdeling helseregistres meldinger -->
 <!-- Modul ipl  -->
 <!-- Skjema for Kravspesifikasjon - IPLOS i KPR  -->
@@ -12,7 +12,7 @@
     xmlns:nprx="http://www.npr.no/xmlstds/56_0_0" 
     xmlns:npr = "http://www.npr.no/xmlstds/56_0_0_ipl"
     targetNamespace = "http://www.npr.no/xmlstds/56_0_0_ipl"
-    version = "56.0.0.27"
+    version = "56.0.0.4"
     elementFormDefault = "qualified"
     attributeFormDefault="unqualified">
    <import namespace="http://www.npr.no/xmlstds/56_0_0" schemaLocation="NPR.xsd"/>
@@ -64,9 +64,14 @@
 <element name = "Notifikasjon">
    <complexType >
       <sequence>
-         <element ref = "npr:TjenesteStart" minOccurs = "0" maxOccurs = "1" />
-         <element ref = "npr:TjenesteutforerEndret" minOccurs = "0" maxOccurs = "1" />
-         <element ref = "npr:TjenesteSlutt" minOccurs = "0" maxOccurs = "1" />
+         <choice>
+         <!-- XOR more than one on Element Notifikasjon -->
+            <element ref = "npr:TjenesteStart" minOccurs = "0" maxOccurs = "1" />
+            <element ref = "npr:MidlertidigStoppTil" minOccurs = "0" maxOccurs = "1" />
+            <element ref = "npr:MidlertidigStoppFra" minOccurs = "0" maxOccurs = "1" />
+            <element ref = "npr:TjenesteutforerEndret" minOccurs = "0" maxOccurs = "1" />
+            <element ref = "npr:TjenesteSlutt" minOccurs = "0" maxOccurs = "1" />
+         </choice>
       </sequence>
       <attribute name = "statusNotifikasjon" type = "npr:status_notifikasjon"  use = "required" />
       <attribute name = "notifikasjonTid" type = "dateTime"  use = "required" />
@@ -79,12 +84,20 @@
          <selector xpath = "npr:TjenesteStart"/>
          <field xpath = "@hendelseGUID"/>
       </unique>
-      <unique name= "TjenesteSluttP_ID">
-         <selector xpath = "npr:TjenesteSlutt"/>
+      <unique name= "MidlertidigStoppTilP_ID">
+         <selector xpath = "npr:MidlertidigStoppTil"/>
+         <field xpath = "@hendelseGUID"/>
+      </unique>
+      <unique name= "MidlertidigStoppFraP_ID">
+         <selector xpath = "npr:MidlertidigStoppFra"/>
          <field xpath = "@hendelseGUID"/>
       </unique>
       <unique name= "TjenesteutforerEndretP_ID">
          <selector xpath = "npr:TjenesteutforerEndret"/>
+         <field xpath = "@hendelseGUID"/>
+      </unique>
+      <unique name= "TjenesteSluttP_ID">
+         <selector xpath = "npr:TjenesteSlutt"/>
          <field xpath = "@hendelseGUID"/>
       </unique>
 </element>
@@ -93,7 +106,7 @@
 <element name = "Kontaktperson">
    <annotation>
        <documentation>
-         Kontaktpersoner for dialog mellom kommune/helseinstitusjon og Helsedirektoratet.  NB: Det kan registreres flere kontaktpersoner per Type kontaktperson.
+         Kontaktpersoner for dialog mellom kommune/helseinstitusjon og Helsedirektoratet.  Kontaktpersoner angitt i denne klassen vil motta tilbakemelding som inneholder særlige kategorier av personopplysninger.  NB: Det kan registreres flere kontaktpersoner per Type kontaktperson.
       </documentation>
    </annotation>
    <complexType >
@@ -133,11 +146,53 @@
          <element ref = "npr:Bruker" maxOccurs = "1"  />
       </sequence>
       <attribute name = "tjenesteType" type = "npr:iPLOS_tjenestetype"  use = "required" />
-      <attribute name = "hendelseRegistrertTidspunkt" type = "dateTime"  use = "required" />
-      <attribute name = "tjenesteOrgNrUtovende" type = "string"  use = "optional" />
+      <attribute name = "hendelseRegTid" type = "dateTime"  use = "required" />
+      <attribute name = "tjenesteOrgNr" type = "string"  use = "optional" />
       <attribute name = "hendelseDato" type = "date"  use = "required" />
       <attribute name = "tjenesteID" type = "string"  use = "required" />
       <attribute name = "hendelseGUID" type = "nprx:guid"  use = "required" />
+   </complexType>
+</element>
+
+<!-- Class: Midlertidig stopp til -->
+<element name = "MidlertidigStoppTil">
+   <annotation>
+       <documentation>
+         Klassen benyttes når en tjeneste som har vært satt på pause/stanset midlertid genopptas.
+      </documentation>
+   </annotation>
+   <complexType >
+      <sequence>
+         <element ref = "npr:Bruker" maxOccurs = "1"  />
+      </sequence>
+      <attribute name = "tjenesteType" type = "npr:iPLOS_tjenestetype"  use = "required" />
+      <attribute name = "hendelseRegTid" type = "dateTime"  use = "required" />
+      <attribute name = "tjenesteOrgNr" type = "string"  use = "required" />
+      <attribute name = "hendelseDato" type = "date"  use = "required" />
+      <attribute name = "tjenesteID" type = "string"  use = "required" />
+      <attribute name = "hendelseGUID" type = "nprx:guid"  use = "required" />
+      <attribute name = "midlertidigStoppID" type = "string"  use = "required" />
+   </complexType>
+</element>
+
+<!-- Class: Midlertidig stopp fra -->
+<element name = "MidlertidigStoppFra">
+   <annotation>
+       <documentation>
+         Klassen benyttes når tjenesten settes på pause/stanses midlertid.
+      </documentation>
+   </annotation>
+   <complexType >
+      <sequence>
+         <element ref = "npr:Bruker" maxOccurs = "1"  />
+      </sequence>
+      <attribute name = "tjenesteType" type = "npr:iPLOS_tjenestetype"  use = "required" />
+      <attribute name = "hendelseRegTid" type = "dateTime"  use = "required" />
+      <attribute name = "tjenesteOrgNr" type = "string"  use = "required" />
+      <attribute name = "hendelseDato" type = "date"  use = "required" />
+      <attribute name = "tjenesteID" type = "string"  use = "required" />
+      <attribute name = "hendelseGUID" type = "nprx:guid"  use = "required" />
+      <attribute name = "midlertidigStoppID" type = "string"  use = "required" />
    </complexType>
 </element>
 
@@ -153,8 +208,8 @@
          <element ref = "npr:Bruker" maxOccurs = "1"  />
       </sequence>
       <attribute name = "tjenesteType" type = "npr:iPLOS_tjenestetype"  use = "required" />
-      <attribute name = "hendelseRegistrertTidspunkt" type = "dateTime"  use = "required" />
-      <attribute name = "tjenesteOrgNrUtovende" type = "string"  use = "optional" />
+      <attribute name = "hendelseRegTid" type = "dateTime"  use = "required" />
+      <attribute name = "tjenesteOrgNr" type = "string"  use = "required" />
       <attribute name = "hendelseDato" type = "date"  use = "required" />
       <attribute name = "tjenesteID" type = "string"  use = "required" />
       <attribute name = "hendelseGUID" type = "nprx:guid"  use = "required" />
@@ -174,8 +229,8 @@
       </sequence>
       <attribute name = "hendelseGUID" type = "nprx:guid"  use = "required" />
       <attribute name = "tjenesteType" type = "npr:iPLOS_tjenestetype"  use = "required" />
-      <attribute name = "tjenesteOrgNrUtovende" type = "string"  use = "optional" />
-      <attribute name = "hendelseRegistrertTidspunkt" type = "dateTime"  use = "required" />
+      <attribute name = "hendelseRegTid" type = "dateTime"  use = "required" />
+      <attribute name = "tjenesteOrgNr" type = "string"  use = "optional" />
       <attribute name = "hendelseDato" type = "date"  use = "required" />
       <attribute name = "tjenesteID" type = "string"  use = "required" />
    </complexType>
@@ -192,14 +247,14 @@
       </documentation>
    </annotation>
    <complexType >
-      <attribute name = "pasientGUID" type = "nprx:guid"  use = "optional" />
+      <attribute name = "pasientGUID" type = "nprx:guid"  use = "required" />
       <attribute name = "brukerNr" type = "string"  use = "required" />
       <attribute name = "kjonn" type = "npr:kjonn"  use = "prohibited" />
       <attribute name = "fodselsar" type = "integer"  use = "prohibited" />
-      <attribute name = "kommuneBydel" type = "nprx:bydelNr"  use = "optional" />
-      <attribute name = "fid" type = "string"  use = "optional" />
+      <attribute name = "bydel" type = "nprx:bydelNr"  use = "optional" />
       <attribute name = "komNrHjem" type = "nprx:kommNr"  use = "prohibited" />
-      <attribute name = "typeID" type = "npr:type_personidentifikasjon"  use = "optional" />
+      <attribute name = "fid" type = "string"  use = "required" />
+      <attribute name = "typeID" type = "npr:type_personidentifikasjon"  use = "required" />
    </complexType>
 </element>
 </schema>
