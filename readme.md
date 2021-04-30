@@ -203,7 +203,7 @@ Ulike miljøer og variabler pr miljø.
 
 ### API avlevering
 
-- Dev: https://app-messagein-dev.azurewebsites.net/api (Internett)
+- Dev: https://app-messagein-dev.azurewebsites.net (Internett)
 - Test: https://hint-inet.utv.helsedir.no/proxy/api/kneik (Internett - tilgang må bestilles)
 - Pilot: https://hint.helsedirektoratet.no/proxy/api/kneik (Helsenett)
 
