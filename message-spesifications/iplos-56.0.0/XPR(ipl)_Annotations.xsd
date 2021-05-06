@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Generated on 2021-04-22  19:57:15 at NPR -->
+<!-- Generated on 2021-04-28  10:07:47 at NPR -->
 <!-- Avdeling helseregistres meldinger -->
 <!-- Modul ipl  -->
 <!-- Skjema for Kravspesifikasjon - IPLOS i KPR  -->
@@ -12,7 +12,7 @@
     xmlns:nprx="http://www.npr.no/xmlstds/56_0_0" 
     xmlns:npr = "http://www.npr.no/xmlstds/56_0_0_ipl"
     targetNamespace = "http://www.npr.no/xmlstds/56_0_0_ipl"
-    version = "56.0.0.4"
+    version = "56.0.0.5"
     elementFormDefault = "qualified"
     attributeFormDefault="unqualified">
 
@@ -2091,7 +2091,7 @@ Kontaktperson som skal kunne åpne passordbeskyttede tilbakemeldinger, må rapport
             <npr:xprAppInfo name="attributeComment" value=""/> 
             <npr:xprAppInfo name="nullsOK" value="True"/> 
             <npr:xprAppInfo name="primaryKey" value="False"/> 
-            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="cardinality" value="0..1"/> 
             <npr:xprAppInfo name="codeOID" value=""/> 
             <npr:xprAppInfo name="origin" value=""/> 
             <npr:xprAppInfo name="tooltip" value="0"/> 
@@ -2114,9 +2114,8 @@ Kontaktperson som skal kunne åpne passordbeskyttede tilbakemeldinger, må rapport
             <npr:xprAppInfo name="handlingTypeID" value="9"/> 
             <!-- Handling: ="Ingen handling" --> 
             <!-- Kontroll av obligatoriske attributter -->
-            <npr:xprAppInfo name="merketForObligat" value="1"/> 
-            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
-            <!-- Handling: ="Ingen handling" --> 
+            <npr:xprAppInfo name="merketForObligat" value=""/> 
+            <npr:xprAppInfo name="handlingObligatID" value=""/> 
             <!-- Kontroll av kodeverk knyttet til attributter -->
             <npr:xprAppInfo name="merketForKodeverk" value=""/> 
             <npr:xprAppInfo name="validationDate" value=""/> 
@@ -2540,7 +2539,7 @@ Kontaktperson som skal kunne åpne passordbeskyttede tilbakemeldinger, må rapport
             <npr:xprAppInfo name="attributeComment" value=""/> 
             <npr:xprAppInfo name="nullsOK" value="True"/> 
             <npr:xprAppInfo name="primaryKey" value="False"/> 
-            <npr:xprAppInfo name="cardinality" value="1"/> 
+            <npr:xprAppInfo name="cardinality" value="0..1"/> 
             <npr:xprAppInfo name="codeOID" value=""/> 
             <npr:xprAppInfo name="origin" value=""/> 
             <npr:xprAppInfo name="tooltip" value="0"/> 
@@ -2563,9 +2562,8 @@ Kontaktperson som skal kunne åpne passordbeskyttede tilbakemeldinger, må rapport
             <npr:xprAppInfo name="handlingTypeID" value="9"/> 
             <!-- Handling: ="Ingen handling" --> 
             <!-- Kontroll av obligatoriske attributter -->
-            <npr:xprAppInfo name="merketForObligat" value="1"/> 
-            <npr:xprAppInfo name="handlingObligatID" value="9"/> 
-            <!-- Handling: ="Ingen handling" --> 
+            <npr:xprAppInfo name="merketForObligat" value=""/> 
+            <npr:xprAppInfo name="handlingObligatID" value=""/> 
             <!-- Kontroll av kodeverk knyttet til attributter -->
             <npr:xprAppInfo name="merketForKodeverk" value=""/> 
             <npr:xprAppInfo name="validationDate" value=""/> 

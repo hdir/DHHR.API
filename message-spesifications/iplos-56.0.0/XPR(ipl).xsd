@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Generated on 2021-04-22  19:57:15 at NPR -->
+<!-- Generated on 2021-04-28  10:07:47 at NPR -->
 <!-- Avdeling helseregistres meldinger -->
 <!-- Modul ipl  -->
 <!-- Skjema for Kravspesifikasjon - IPLOS i KPR  -->
@@ -12,7 +12,7 @@
     xmlns:nprx="http://www.npr.no/xmlstds/56_0_0" 
     xmlns:npr = "http://www.npr.no/xmlstds/56_0_0_ipl"
     targetNamespace = "http://www.npr.no/xmlstds/56_0_0_ipl"
-    version = "56.0.0.4"
+    version = "56.0.0.5"
     elementFormDefault = "qualified"
     attributeFormDefault="unqualified">
    <import namespace="http://www.npr.no/xmlstds/56_0_0" schemaLocation="NPR.xsd"/>
@@ -26,7 +26,7 @@
 <element name = "Melding">
    <annotation>
        <documentation>
-         Opplysninger som leverandører av helsetjenester i kommuner, helsevirksomheter eller helsepersonell etter bestemmelser i lov eller i medhold av lov i gitte situasjoner er pliktig til å rapportere.
+         Opplysninger som leverandï¿½rer av helsetjenester i kommuner, helsevirksomheter eller helsepersonell etter bestemmelser i lov eller i medhold av lov i gitte situasjoner er pliktig til ï¿½ rapportere.
       </documentation>
    </annotation>
    <complexType >
@@ -64,14 +64,11 @@
 <element name = "Notifikasjon">
    <complexType >
       <sequence>
-         <choice>
-         <!-- XOR more than one on Element Notifikasjon -->
-            <element ref = "npr:TjenesteStart" minOccurs = "0" maxOccurs = "1" />
-            <element ref = "npr:MidlertidigStoppTil" minOccurs = "0" maxOccurs = "1" />
-            <element ref = "npr:MidlertidigStoppFra" minOccurs = "0" maxOccurs = "1" />
-            <element ref = "npr:TjenesteutforerEndret" minOccurs = "0" maxOccurs = "1" />
-            <element ref = "npr:TjenesteSlutt" minOccurs = "0" maxOccurs = "1" />
-         </choice>
+         <element ref = "npr:TjenesteStart" minOccurs = "0" maxOccurs = "1" />
+         <element ref = "npr:MidlertidigStoppTil" minOccurs = "0" maxOccurs = "1" />
+         <element ref = "npr:MidlertidigStoppFra" minOccurs = "0" maxOccurs = "1" />
+         <element ref = "npr:TjenesteutforerEndret" minOccurs = "0" maxOccurs = "1" />
+         <element ref = "npr:TjenesteSlutt" minOccurs = "0" maxOccurs = "1" />
       </sequence>
       <attribute name = "statusNotifikasjon" type = "npr:status_notifikasjon"  use = "required" />
       <attribute name = "notifikasjonTid" type = "dateTime"  use = "required" />
@@ -106,7 +103,7 @@
 <element name = "Kontaktperson">
    <annotation>
        <documentation>
-         Kontaktpersoner for dialog mellom kommune/helseinstitusjon og Helsedirektoratet.  Kontaktpersoner angitt i denne klassen vil motta tilbakemelding som inneholder særlige kategorier av personopplysninger.  NB: Det kan registreres flere kontaktpersoner per Type kontaktperson.
+         Kontaktpersoner for dialog mellom kommune/helseinstitusjon og Helsedirektoratet.  Kontaktpersoner angitt i denne klassen vil motta tilbakemelding som inneholder sï¿½rlige kategorier av personopplysninger.  NB: Det kan registreres flere kontaktpersoner per Type kontaktperson.
       </documentation>
    </annotation>
    <complexType >
@@ -122,7 +119,7 @@
 <element name = "Kommune">
    <annotation>
        <documentation>
-         Helse- og omsorgstjenester definert i helse- og omsorgstjenesteloven § 3-2 første ledd nr. 4, nr. 5 og nr. 6 og § 3-6 og § 3-8. Se også kodeverket for tjenestetyper.
+         Helse- og omsorgstjenester definert i helse- og omsorgstjenesteloven ï¿½ 3-2 fï¿½rste ledd nr. 4, nr. 5 og nr. 6 og ï¿½ 3-6 og ï¿½ 3-8. Se ogsï¿½ kodeverket for tjenestetyper.
       </documentation>
    </annotation>
    <complexType >
@@ -158,7 +155,7 @@
 <element name = "MidlertidigStoppTil">
    <annotation>
        <documentation>
-         Klassen benyttes når en tjeneste som har vært satt på pause/stanset midlertid genopptas.
+         Klassen benyttes nï¿½r en tjeneste som har vï¿½rt satt pï¿½ pause/stanset midlertid genopptas.
       </documentation>
    </annotation>
    <complexType >
@@ -167,7 +164,7 @@
       </sequence>
       <attribute name = "tjenesteType" type = "npr:iPLOS_tjenestetype"  use = "required" />
       <attribute name = "hendelseRegTid" type = "dateTime"  use = "required" />
-      <attribute name = "tjenesteOrgNr" type = "string"  use = "required" />
+      <attribute name = "tjenesteOrgNr" type = "string"  use = "optional" />
       <attribute name = "hendelseDato" type = "date"  use = "required" />
       <attribute name = "tjenesteID" type = "string"  use = "required" />
       <attribute name = "hendelseGUID" type = "nprx:guid"  use = "required" />
@@ -179,7 +176,7 @@
 <element name = "MidlertidigStoppFra">
    <annotation>
        <documentation>
-         Klassen benyttes når tjenesten settes på pause/stanses midlertid.
+         Klassen benyttes nï¿½r tjenesten settes pï¿½ pause/stanses midlertid.
       </documentation>
    </annotation>
    <complexType >
@@ -188,7 +185,7 @@
       </sequence>
       <attribute name = "tjenesteType" type = "npr:iPLOS_tjenestetype"  use = "required" />
       <attribute name = "hendelseRegTid" type = "dateTime"  use = "required" />
-      <attribute name = "tjenesteOrgNr" type = "string"  use = "required" />
+      <attribute name = "tjenesteOrgNr" type = "string"  use = "optional" />
       <attribute name = "hendelseDato" type = "date"  use = "required" />
       <attribute name = "tjenesteID" type = "string"  use = "required" />
       <attribute name = "hendelseGUID" type = "nprx:guid"  use = "required" />
@@ -196,11 +193,11 @@
    </complexType>
 </element>
 
-<!-- Class: Tjenesteutfører endret -->
+<!-- Class: Tjenesteutfï¿½rer endret -->
 <element name = "TjenesteutforerEndret">
    <annotation>
        <documentation>
-         Tjenesteutfører for en tjeneste er endret
+         Tjenesteutfï¿½rer for en tjeneste er endret
       </documentation>
    </annotation>
    <complexType >
@@ -243,7 +240,7 @@
 <element name = "Bruker">
    <annotation>
        <documentation>
-         En person som søker om, eller mottar kommunale helse- og omsorgstjenester.
+         En person som sï¿½ker om, eller mottar kommunale helse- og omsorgstjenester.
       </documentation>
    </annotation>
    <complexType >

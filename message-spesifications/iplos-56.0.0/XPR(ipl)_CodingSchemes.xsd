@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<!-- Generated on 2021-04-22  19:57:15 at NPR -->
+<!-- Generated on 2021-04-28  10:07:47 at NPR -->
 <!-- Avdeling helseregistres meldinger -->
 <!-- Modul ipl  -->
 <!-- Skjema for Kravspesifikasjon - IPLOS i KPR  -->
@@ -12,7 +12,7 @@
     xmlns:nprx="http://www.npr.no/xmlstds/56_0_0" 
     xmlns:npr = "http://www.npr.no/xmlstds/56_0_0_ipl"
     targetNamespace = "http://www.npr.no/xmlstds/56_0_0_ipl"
-    version = "56.0.0.4"
+    version = "56.0.0.5"
     elementFormDefault = "qualified"
     attributeFormDefault="unqualified">
    <import namespace="http://www.npr.no/xmlstds/56_0_0" schemaLocation="NPR.xsd"/>
